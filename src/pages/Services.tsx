@@ -1,63 +1,42 @@
-import { Section, SectionTitle, SectionSubtitle, FadeIn } from "@/components/SectionComponents";
+import { Section, SectionTitle, SectionSubtitle, FadeIn, StaggerContainer, StaggerItem } from "@/components/SectionComponents";
 import { Briefcase, Globe, Code } from "lucide-react";
-
-const serviceBlocks = [
-  {
-    icon: Briefcase,
-    title: "Corporate Advisory Services",
-    items: [
-      "Strategic business consulting",
-      "Market entry advisory",
-      "Operational structuring",
-      "Cross-border coordination support",
-      "Project-based implementation oversight",
-    ],
-    note: "Each engagement is governed by formal agreements and defined service deliverables.",
-  },
-  {
-    icon: Globe,
-    title: "Operational Coordination Support",
-    items: [
-      "Structured coordination advisory",
-      "Charter logistics consultation",
-      "Cross-border operational planning",
-      "Vendor coordination framework",
-    ],
-    note: "Our role remains advisory and coordination-based only.",
-  },
-  {
-    icon: Code,
-    title: "Software & Technology Solutions",
-    items: [
-      "Custom software development",
-      "Web application development",
-      "Database architecture",
-      "System integration advisory",
-      "Digital transformation consulting",
-    ],
-    note: "Projects are milestone-based and delivered under defined scopes.",
-  },
-];
+import { motion } from "framer-motion";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { LucideIcon } from "lucide-react";
 
 const Services = () => {
+  const { t } = useLanguage();
+
+  const serviceBlocks: { icon: LucideIcon; title: string; items: string[]; note: string }[] = [
+    { icon: Briefcase, title: t.servicesPage.advisoryTitle, items: t.servicesPage.advisoryItems, note: t.servicesPage.advisoryNote },
+    { icon: Globe, title: t.servicesPage.coordTitle, items: t.servicesPage.coordItems, note: t.servicesPage.coordNote },
+    { icon: Code, title: t.servicesPage.techTitle, items: t.servicesPage.techItems, note: t.servicesPage.techNote },
+  ];
+
   return (
     <Section>
       <FadeIn>
-        <p className="text-accent font-heading text-sm tracking-widest mb-4">WHAT WE DO</p>
+        <p className="text-accent font-heading text-sm tracking-widest mb-4">{t.servicesPage.label}</p>
       </FadeIn>
       <SectionTitle>
-        Our <span className="text-gradient-gold">Services</span>
+        {t.servicesPage.title1} <span className="text-gradient-gold">{t.servicesPage.title2}</span>
       </SectionTitle>
-      <SectionSubtitle>Comprehensive corporate advisory and technology solutions for international business clients.</SectionSubtitle>
+      <SectionSubtitle>{t.servicesPage.subtitle}</SectionSubtitle>
 
-      <div className="space-y-10">
-        {serviceBlocks.map((block, i) => (
-          <FadeIn key={block.title} delay={i * 0.15}>
-            <div className="bg-card border border-border rounded-xl p-8 md:p-10 hover:border-accent/20 transition-all duration-500">
-              <div className="flex items-start gap-6">
-                <div className="w-14 h-14 rounded-lg bg-gradient-gold flex items-center justify-center flex-shrink-0">
+      <StaggerContainer className="space-y-8">
+        {serviceBlocks.map((block) => (
+          <StaggerItem key={block.title}>
+            <motion.div
+              whileHover={{ borderColor: "hsl(43 85% 55% / 0.25)" }}
+              className="bg-card border border-border rounded-xl p-8 md:p-10 transition-all duration-500 shadow-card"
+            >
+              <div className="flex flex-col md:flex-row items-start gap-6">
+                <motion.div
+                  whileHover={{ rotate: 5, scale: 1.05 }}
+                  className="w-14 h-14 rounded-xl bg-gradient-gold flex items-center justify-center flex-shrink-0"
+                >
                   <block.icon size={24} className="text-accent-foreground" />
-                </div>
+                </motion.div>
                 <div className="flex-1">
                   <h3 className="font-heading text-2xl font-semibold mb-6">{block.title}</h3>
                   <ul className="grid sm:grid-cols-2 gap-3 mb-6">
@@ -71,10 +50,10 @@ const Services = () => {
                   <p className="text-muted-foreground text-sm italic border-t border-border pt-4">{block.note}</p>
                 </div>
               </div>
-            </div>
-          </FadeIn>
+            </motion.div>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
     </Section>
   );
 };
