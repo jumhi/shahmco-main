@@ -1,61 +1,61 @@
-import { Section, SectionTitle, SectionSubtitle, FadeIn } from "@/components/SectionComponents";
-
-const steps = [
-  { num: "01", title: "Initial Corporate Consultation", desc: "We begin with a structured dialogue to understand your business requirements." },
-  { num: "02", title: "Scope Definition & Proposal", desc: "A detailed proposal outlining deliverables, timelines, and engagement terms." },
-  { num: "03", title: "Contract Execution", desc: "Formal agreements executed with clear terms and milestone definitions." },
-  { num: "04", title: "Milestone-Based Delivery", desc: "Progressive delivery with regular reporting and client alignment." },
-  { num: "05", title: "Project Completion & Review", desc: "Final deliverables with comprehensive review and documentation." },
-];
-
-const billing = [
-  "Fixed professional service fees",
-  "Milestone or quarterly invoicing",
-  "Corporate clients only",
-  "Invoice-based payments",
-  "No commission-based compensation",
-];
+import { Section, SectionTitle, SectionSubtitle, FadeIn, StaggerContainer, StaggerItem } from "@/components/SectionComponents";
+import { motion } from "framer-motion";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const HowWeWork = () => {
+  const { t } = useLanguage();
+
   return (
     <>
       <Section>
         <FadeIn>
-          <p className="text-accent font-heading text-sm tracking-widest mb-4">PROCESS</p>
+          <p className="text-accent font-heading text-sm tracking-widest mb-4">{t.howWeWorkPage.label}</p>
         </FadeIn>
         <SectionTitle>
-          Our <span className="text-gradient-gold">Engagement Model</span>
+          {t.howWeWorkPage.title1} <span className="text-gradient-gold">{t.howWeWorkPage.title2}</span>
         </SectionTitle>
-        <SectionSubtitle>A disciplined, transparent approach from consultation to completion.</SectionSubtitle>
+        <SectionSubtitle>{t.howWeWorkPage.subtitle}</SectionSubtitle>
 
-        <div className="space-y-6">
-          {steps.map((step, i) => (
-            <FadeIn key={step.num} delay={i * 0.1}>
-              <div className="flex items-start gap-6 bg-card border border-border rounded-xl p-6 hover:border-accent/20 transition-all">
-                <span className="text-gradient-gold font-heading text-3xl font-bold">{step.num}</span>
+        <StaggerContainer className="space-y-5">
+          {t.howWeWorkPage.steps.map((step, i) => (
+            <StaggerItem key={i}>
+              <motion.div
+                whileHover={{ x: 8, borderColor: "hsl(43 85% 55% / 0.3)" }}
+                className="flex items-start gap-6 bg-card border border-border rounded-xl p-6 shadow-card transition-all"
+              >
+                <span className="text-gradient-gold font-heading text-3xl font-bold">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <div>
                   <h3 className="font-heading text-lg font-semibold mb-1">{step.title}</h3>
                   <p className="text-muted-foreground">{step.desc}</p>
                 </div>
-              </div>
-            </FadeIn>
+              </motion.div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </Section>
 
-      <Section className="bg-secondary/30">
-        <SectionTitle>Billing Structure</SectionTitle>
-        <SectionSubtitle>Transparent, structured billing aligned with professional standards.</SectionSubtitle>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {billing.map((item, i) => (
-            <FadeIn key={item} delay={i * 0.08}>
-              <div className="bg-card border border-border rounded-lg p-5 flex items-center gap-3">
+      <div className="container mx-auto px-6">
+        <div className="h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+      </div>
+
+      <Section>
+        <SectionTitle>{t.howWeWorkPage.billingTitle}</SectionTitle>
+        <SectionSubtitle>{t.howWeWorkPage.billingSubtitle}</SectionSubtitle>
+        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {t.howWeWorkPage.billingItems.map((item) => (
+            <StaggerItem key={item}>
+              <motion.div
+                whileHover={{ y: -3 }}
+                className="bg-card border border-border rounded-xl p-5 flex items-center gap-3"
+              >
                 <span className="w-2 h-2 rounded-full bg-accent flex-shrink-0" />
                 <span className="text-foreground text-sm">{item}</span>
-              </div>
-            </FadeIn>
+              </motion.div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </Section>
     </>
   );
