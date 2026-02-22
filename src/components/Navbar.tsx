@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/shahmco-logo.jpg";
+import logo from "@/assets/shahmco-logo.png";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -28,7 +28,7 @@ const Navbar = () => {
           <motion.img
             src={logo}
             alt="Shahmco Global"
-            className="h-11 w-11 rounded-full object-cover ring-2 ring-accent/20 group-hover:ring-accent/50 transition-all"
+            className="h-11 w-auto object-contain transition-all"
             whileHover={{ scale: 1.05 }}
           />
           <div>
