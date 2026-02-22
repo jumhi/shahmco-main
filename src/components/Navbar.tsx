@@ -33,7 +33,7 @@ const Navbar = () => {
           />
           <div>
             <span className="text-gradient-gold font-heading text-lg font-bold tracking-wide">SHAHMCO GLOBAL</span>
-            <p className="text-muted-foreground text-[10px] tracking-[0.2em]">TRADE & CONSULTANCY</p>
+            <p className="text-muted-foreground text-[10px] tracking-[0.2em]">CORPORATE ADVISORY & SOFTWARE</p>
           </div>
         </Link>
 
