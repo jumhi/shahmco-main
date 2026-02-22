@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
-import logo from "@/assets/shahmco-logo.jpg";
+import logo from "@/assets/shahmco-logo.png";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-10">
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="Shahmco Global" className="h-10 w-10 rounded-full object-cover ring-2 ring-accent/20" />
+              <img src={logo} alt="Shahmco Global" className="h-10 w-auto object-contain" />
               <span className="text-gradient-gold font-heading text-lg font-bold">SHAHMCO</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
