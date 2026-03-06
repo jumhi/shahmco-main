@@ -62,6 +62,14 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-3">
+          <a
+            href="https://portal.shahmco.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg border border-accent/30 text-accent hover:bg-accent/10 transition-all"
+          >
+            Log In
+          </a>
           <LanguageSwitcher />
           <button
             onClick={() => setIsOpen(!isOpen)}
