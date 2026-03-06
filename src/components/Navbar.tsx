@@ -111,6 +111,21 @@ const Navbar = () => {
                   </Link>
                 </motion.div>
               ))}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navItems.length * 0.05 }}
+              >
+                <a
+                  href="https://portal.shahmco.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-3 text-sm font-medium rounded-lg text-accent hover:bg-secondary/30 transition-all"
+                >
+                  Log In →
+                </a>
+              </motion.div>
             </div>
           </motion.div>
         )}
