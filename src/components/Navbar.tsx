@@ -111,29 +111,17 @@ const Navbar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
                 >
-                  {item.external ? (
-                    <a
-                      href={item.path}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setIsOpen(false)}
-                      className="block px-4 py-3 text-sm font-medium rounded-lg text-accent hover:bg-secondary/30 transition-all"
-                    >
-                      {item.label} →
-                    </a>
-                  ) : (
-                    <Link
-                      to={item.path}
-                      onClick={() => setIsOpen(false)}
-                      className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all ${
-                        location.pathname === item.path
-                          ? "text-accent bg-secondary"
-                          : "text-muted-foreground hover:text-foreground hover:bg-secondary/30"
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  )}
+                  <Link
+                    to={item.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all ${
+                      location.pathname === item.path
+                        ? "text-accent bg-secondary"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/30"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
                 </motion.div>
               ))}
               <motion.div
