@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FileText, Package, ArrowRight } from "lucide-react";
+import { FileText, Package, ArrowRight, CreditCard, Smartphone, Wallet, Building2, ShieldCheck } from "lucide-react";
 import {
   Section,
   SectionTitle,
@@ -11,7 +11,24 @@ import {
 } from "@/components/SectionComponents";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-const Downloads = () => {
+// Payment gateway placeholder — wire to a real provider (Stripe, Telr, Network International) later.
+const handleCheckout = (productTitle: string, price: string) => {
+  const params = new URLSearchParams({ product: productTitle, price });
+  window.location.href = `/contact?${params.toString()}`;
+};
+
+const PAYMENT_METHODS = [
+  { label: "Visa", icon: CreditCard },
+  { label: "Mastercard", icon: CreditCard },
+  { label: "Mada", icon: CreditCard },
+  { label: "Apple Pay", icon: Smartphone },
+  { label: "Google Pay", icon: Smartphone },
+  { label: "Samsung Pay", icon: Smartphone },
+  { label: "Installments", icon: Wallet },
+  { label: "Bank Transfer", icon: Building2 },
+];
+
+const B2C = () => {
   const { t } = useLanguage();
   const d = t.downloadsPage;
 
@@ -19,7 +36,7 @@ const Downloads = () => {
     <>
       <Section className="pb-0">
         <FadeIn>
-          <p className="text-accent font-heading text-sm tracking-widest mb-4">{d.label}</p>
+          <p className="text-accent font-heading text-sm tracking-widest mb-4">B2C · BUSINESS-TO-CONSUMER</p>
         </FadeIn>
         <SectionTitle>
           {d.title1} <span className="text-gradient-gold">{d.title2}</span>
@@ -37,39 +54,51 @@ const Downloads = () => {
         <SectionSubtitle>{d.digitalSubtitle}</SectionSubtitle>
 
         <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {d.items.map((item) => (
-            <StaggerItem key={item.title}>
-              <motion.div
-                whileHover={{ y: -4, borderColor: "hsl(43 85% 55% / 0.3)" }}
-                className="bg-card border border-border rounded-xl p-6 shadow-card h-full flex flex-col transition-all"
-              >
-                <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center mb-4">
-                  <FileText size={18} className="text-accent" />
-                </div>
-                <span className="text-[10px] tracking-widest text-accent font-mono mb-2">
-                  {item.tagLabel.toUpperCase()}
-                </span>
-                <h4 className="font-heading font-semibold text-foreground mb-2 leading-tight">
-                  {item.title}
-                </h4>
-                <p className="text-muted-foreground text-xs leading-relaxed flex-1 mb-5">
-                  {item.desc}
-                </p>
-                <div className="flex items-center justify-between border-t border-border pt-4">
-                  <div>
-                    <div className="text-gradient-gold font-heading font-bold">{item.price}</div>
-                    <div className="text-[10px] text-muted-foreground">+ VAT</div>
+          {d.items.map((item) => {
+            const isHighTicket = item.price.includes("AED 2") || item.price.includes("AED 3");
+            return (
+              <StaggerItem key={item.title}>
+                <motion.div
+                  whileHover={{ y: -4, borderColor: "hsl(43 85% 55% / 0.3)" }}
+                  className="bg-card border border-border rounded-xl p-6 shadow-card h-full flex flex-col transition-all"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center mb-4">
+                    <FileText size={18} className="text-accent" />
                   </div>
-                  <Link
-                    to="/contact"
-                    className="text-xs px-3 py-1.5 rounded-md border border-accent/30 text-accent hover:bg-accent/10 transition-all"
-                  >
-                    {d.enquire}
-                  </Link>
-                </div>
-              </motion.div>
-            </StaggerItem>
-          ))}
+                  <span className="text-[10px] tracking-widest text-accent font-mono mb-2">
+                    {item.tagLabel.toUpperCase()}
+                  </span>
+                  <h4 className="font-heading font-semibold text-foreground mb-2 leading-tight">
+                    {item.title}
+                  </h4>
+                  <p className="text-muted-foreground text-xs leading-relaxed flex-1 mb-5">
+                    {item.desc}
+                  </p>
+                  <div className="flex items-center justify-between border-t border-border pt-4 gap-2">
+                    <div>
+                      <div className="text-gradient-gold font-heading font-bold">{item.price}</div>
+                      <div className="text-[10px] text-muted-foreground">+ VAT</div>
+                    </div>
+                    {isHighTicket ? (
+                      <Link
+                        to="/contact"
+                        className="text-xs px-3 py-1.5 rounded-md border border-accent/30 text-accent hover:bg-accent/10 transition-all"
+                      >
+                        {d.enquire}
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={() => handleCheckout(item.title, item.price)}
+                        className="text-xs px-3 py-1.5 rounded-md bg-accent text-accent-foreground hover:opacity-90 transition-all"
+                      >
+                        {d.getStarted}
+                      </button>
+                    )}
+                  </div>
+                </motion.div>
+              </StaggerItem>
+            );
+          })}
         </StaggerContainer>
       </Section>
 
@@ -109,9 +138,9 @@ const Downloads = () => {
                   </div>
                   <Link
                     to="/contact"
-                    className="text-sm px-4 py-2 rounded-lg bg-accent text-accent-foreground hover:opacity-90 transition-all whitespace-nowrap"
+                    className="text-sm px-4 py-2 rounded-lg border border-accent/30 text-accent hover:bg-accent/10 transition-all whitespace-nowrap"
                   >
-                    {d.getStarted}
+                    {d.enquire}
                   </Link>
                 </div>
               </motion.div>
@@ -157,8 +186,40 @@ const Downloads = () => {
               to="/pricing"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-accent/30 text-accent hover:bg-accent/10 transition-all text-sm font-medium"
             >
-              See E-Invoicing Platform
+              See Flagship Products
             </Link>
+          </div>
+        </FadeIn>
+      </Section>
+
+      {/* Payment Methods Banner */}
+      <Section className="pt-0">
+        <FadeIn>
+          <div className="bg-card border border-border rounded-2xl p-8 shadow-card">
+            <div className="flex items-center gap-2 mb-5">
+              <ShieldCheck size={18} className="text-accent" />
+              <span className="text-accent font-heading text-xs tracking-widest">SECURE PAYMENT METHODS</span>
+            </div>
+            <h3 className="font-heading text-xl font-bold text-foreground mb-2">
+              We accept all major payment methods
+            </h3>
+            <p className="text-muted-foreground text-sm mb-6">
+              All transactions are SSL-encrypted and processed via PCI-DSS compliant gateways.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+              {PAYMENT_METHODS.map((m) => {
+                const Icon = m.icon;
+                return (
+                  <div
+                    key={m.label}
+                    className="flex flex-col items-center gap-2 p-3 rounded-lg bg-secondary/50 border border-border hover:border-accent/30 transition-all"
+                  >
+                    <Icon size={20} className="text-accent" />
+                    <span className="text-[11px] text-foreground font-medium text-center">{m.label}</span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </FadeIn>
       </Section>
@@ -166,4 +227,4 @@ const Downloads = () => {
   );
 };
 
-export default Downloads;
+export default B2C;

@@ -13,11 +13,12 @@ const Navbar = () => {
 
   const navItems = [
     { label: t.nav.home, path: "/" },
-    { label: t.nav.services, path: "/services" },
-    { label: t.nav.pricing, path: "/products" },
-    { label: t.nav.downloads, path: "/downloads" },
-    { label: t.nav.visa, path: "/visa" },
     { label: t.nav.about, path: "/about" },
+    { label: t.nav.services, path: "/services" },
+    { label: t.nav.downloads, path: "/b2c" },
+    { label: t.nav.visa, path: "/visa" },
+    { label: t.nav.howWeWork, path: "/how-we-work" },
+    { label: t.nav.compliance, path: "/compliance" },
     { label: t.nav.contact, path: "/contact" },
   ];
 
@@ -33,7 +34,7 @@ const Navbar = () => {
           />
           <div>
             <span className="text-gradient-gold font-heading text-lg font-bold tracking-wide">SHAHMCO GLOBAL</span>
-            <p className="text-muted-foreground text-[10px] tracking-[0.2em]">CORPORATE ADVISORY & SOFTWARE</p>
+            <p className="text-muted-foreground text-[10px] tracking-[0.2em]">CORPORATE ADVISORY & SOFTWARE SOLUTIONS</p>
           </div>
         </Link>
 

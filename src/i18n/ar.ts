@@ -12,7 +12,7 @@ export const ar: TranslationKeys = {
     contact: "اتصل بنا",
     privacy: "الخصوصية",
     pricing: "المنتجات",
-    downloads: "التنزيلات",
+    downloads: "B2C",
     visa: "خدمات التأشيرات",
   },
   hero: {

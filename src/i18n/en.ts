@@ -12,7 +12,7 @@ export const en: TranslationKeys = {
     contact: "Contact",
     privacy: "Privacy",
     pricing: "Products",
-    downloads: "Downloads",
+    downloads: "B2C",
     visa: "Visa Services",
   },
   hero: {
