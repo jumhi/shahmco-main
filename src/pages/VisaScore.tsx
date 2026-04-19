@@ -734,26 +734,35 @@ const VisaScore = () => {
             <p className="text-muted-foreground text-sm mb-8">{v.s1Sub}</p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
-              {DESTINATIONS.map((d) => (
-                <motion.button
-                  key={d.id}
-                  whileHover={{ y: -2 }}
-                  onClick={() => setSelectedDestId(d.id)}
-                  className={`relative text-start bg-card border rounded-xl p-4 transition-all ${
-                    selectedDestId === d.id ? "border-accent shadow-gold" : "border-border hover:border-primary/40"
-                  }`}
-                >
-                  {d.badge && (
-                    <span className={`absolute top-2 end-2 text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full border ${
-                      d.badge === "hajj" ? "bg-accent/15 text-accent border-accent/30" : "bg-rose-500/15 text-rose-400 border-rose-500/30"
-                    }`}>{d.badgeLabel}</span>
-                  )}
-                  <div className="text-2xl mb-2">{d.flag}</div>
-                  <div className="font-heading font-semibold text-foreground text-sm">{d.name}</div>
-                  <div className="text-[10px] text-muted-foreground mt-1 uppercase tracking-wider">{v.s1Threshold} {d.threshold}/100</div>
-                  <div className="text-[11px] text-accent mt-1.5">{d.funds}</div>
-                </motion.button>
-              ))}
+              {DESTINATIONS.map((d) => {
+                const localName = COUNTRY_I18N[language][d.id] ?? d.name;
+                const localBadge = d.badge === "hot" ? BADGE_I18N[language].hot : d.badge === "hajj" ? BADGE_I18N[language].hajj : null;
+                return (
+                  <motion.button
+                    key={d.id}
+                    whileHover={{ y: -2 }}
+                    onClick={() => setSelectedDestId(d.id)}
+                    style={{ backgroundImage: d.gradient }}
+                    className={`relative text-start bg-card border rounded-xl p-4 transition-all overflow-hidden ${
+                      selectedDestId === d.id ? "border-accent shadow-gold" : "border-border hover:border-primary/40"
+                    }`}
+                  >
+                    {/* Subtle dark overlay so flag gradient stays a tint, not a wash */}
+                    <span className="absolute inset-0 bg-card/55 pointer-events-none" aria-hidden />
+                    <span className="relative block">
+                      {d.badge && (
+                        <span className={`absolute top-0 end-0 text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full border ${
+                          d.badge === "hajj" ? "bg-accent/15 text-accent border-accent/30" : "bg-rose-500/15 text-rose-400 border-rose-500/30"
+                        }`}>{localBadge}</span>
+                      )}
+                      <span className="block text-2xl mb-2">{d.flag}</span>
+                      <span className="block font-heading font-semibold text-foreground text-sm">{localName}</span>
+                      <span className="block text-[10px] text-muted-foreground mt-1 uppercase tracking-wider">{v.s1Threshold} {d.threshold}/100</span>
+                      <span className="block text-[11px] text-accent mt-1.5">{d.funds}</span>
+                    </span>
+                  </motion.button>
+                );
+              })}
             </div>
 
             <div className="flex justify-end">
