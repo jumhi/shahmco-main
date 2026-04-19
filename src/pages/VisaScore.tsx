@@ -6,6 +6,16 @@ import { ArrowRight, Check, AlertCircle, MessageCircle, Printer, RotateCcw } fro
 import { Section, FadeIn } from "@/components/SectionComponents";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { ShieldCheck, Lock, Mail } from "lucide-react";
+import afwaajLogo from "@/assets/partners/afwaaj.png";
+import sultanLogo from "@/assets/partners/sultan-global.jpeg";
+import hamumyLogo from "@/assets/partners/al-hamumy.jpeg";
+
+const PARTNERS = [
+  { name: "AFWAAJ", logo: afwaajLogo, tag: "Strategic Affiliate" },
+  { name: "Sultan Group Global", logo: sultanLogo, tag: "Corporate Partner" },
+  { name: "AL-HAMUMY LTD", logo: hamumyLogo, tag: "Travel & Visa Partner" },
+];
 
 // ═══════════════════════════════════════ DATA ═══════════════════════════════════════
 type Destination = {
@@ -237,6 +247,52 @@ const VisaScore = () => {
           <p className="text-muted-foreground text-sm max-w-2xl mx-auto mt-3">
             Pre-screening advisory tool — does not guarantee visa approval or replace official embassy assessment.
           </p>
+
+          {/* Trust badges */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-5">
+            <span className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-wider text-muted-foreground bg-card/60 border border-border rounded-full px-3 py-1.5">
+              <ShieldCheck size={13} className="text-accent" /> SPCFZ Licensed · No. 4423928.01
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-wider text-muted-foreground bg-card/60 border border-border rounded-full px-3 py-1.5">
+              <Lock size={13} className="text-accent" /> Encrypted Submission
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-wider text-muted-foreground bg-card/60 border border-border rounded-full px-3 py-1.5">
+              <Mail size={13} className="text-accent" /> Reviewed by Specialists
+            </span>
+          </div>
+        </div>
+      </FadeIn>
+
+      {/* Powered By — Partner Network */}
+      <FadeIn delay={0.1}>
+        <div className="mb-12 bg-card/40 border border-border rounded-2xl p-6 md:p-8">
+          <div className="text-center mb-6">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-accent font-heading mb-1">Powered By</p>
+            <h3 className="font-heading text-lg md:text-xl text-foreground">
+              Our Trusted <span className="text-gradient-gold">Partner Network</span>
+            </h3>
+            <p className="text-muted-foreground text-xs mt-1">Operating in coordination with licensed corporate, travel & visa partners across the GCC.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {PARTNERS.map((p) => (
+              <div
+                key={p.name}
+                className="group relative bg-background/60 border border-border hover:border-accent/50 rounded-xl p-5 flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-gold overflow-hidden"
+              >
+                <div className="h-20 w-full flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110">
+                  <img
+                    src={p.logo}
+                    alt={`${p.name} logo`}
+                    className="max-h-20 max-w-[180px] w-auto h-auto object-contain filter grayscale group-hover:grayscale-0 opacity-80 group-hover:opacity-100 transition-all duration-500"
+                  />
+                </div>
+                <div className="text-center">
+                  <div className="font-heading text-sm font-semibold text-foreground tracking-wide">{p.name}</div>
+                  <div className="text-[10px] uppercase tracking-widest text-accent mt-0.5">{p.tag}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </FadeIn>
 
