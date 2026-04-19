@@ -113,7 +113,7 @@ const Contact = () => {
                   <div>
                     <p className="font-medium text-foreground text-sm">{item.label}</p>
                     {item.href ? (
-                      <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="text-muted-foreground text-sm hover:text-accent transition-colors">{item.value}</a>
+                      <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" dir={item.label === t.contactPage.phone ? "ltr" : undefined} className="inline-block text-muted-foreground text-sm hover:text-accent transition-colors">{item.value}</a>
                     ) : (
                       <p className="text-muted-foreground text-sm">{item.value}</p>
                     )}

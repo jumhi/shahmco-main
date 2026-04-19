@@ -51,7 +51,7 @@ const Footer = () => {
               <li>{t.footer.address1}</li>
               <li>{t.footer.address2}</li>
               <li><a href="mailto:info@shahmco.com" className="hover:text-foreground transition-colors duration-300">info@shahmco.com</a></li>
-              <li><a href="https://wa.me/971567878746" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors duration-300">+971 56 787 8746</a></li>
+              <li><a href="https://wa.me/971567878746" target="_blank" rel="noopener noreferrer" dir="ltr" className="inline-block hover:text-foreground transition-colors duration-300">+971 56 787 8746</a></li>
               <li><Link to="/contact" className="text-accent hover:text-foreground transition-colors duration-300">{t.footer.getInTouch}</Link></li>
             </ul>
           </div>
