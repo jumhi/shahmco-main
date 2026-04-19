@@ -1,4 +1,5 @@
 import { TranslationKeys } from "./types";
+import { pricingPageEN, downloadsPageEN, visaPageEN } from "./extra-en";
 
 export const en: TranslationKeys = {
   nav: {
@@ -10,6 +11,9 @@ export const en: TranslationKeys = {
     clients: "Clients",
     contact: "Contact",
     privacy: "Privacy",
+    pricing: "Pricing",
+    downloads: "Downloads",
+    visa: "Visa Services",
   },
   hero: {
     badge: "UAE-BASED GLOBAL EXCELLENCE · SPCFZ LICENSED",
@@ -364,4 +368,7 @@ export const en: TranslationKeys = {
     contactNote:
       "Privacy enquiries: For any questions regarding this Privacy Policy or your personal data, please use our Contact page. Registered office: Business Centre, Sharjah Publishing City Free Zone (SPCFZ), Sharjah, UAE. License No. 4423928.01.",
   },
+  pricingPage: pricingPageEN,
+  downloadsPage: downloadsPageEN,
+  visaPage: visaPageEN,
 };

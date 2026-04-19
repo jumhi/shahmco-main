@@ -14,6 +14,9 @@ import Clients from "./pages/Clients";
 import Contact from "./pages/Contact";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import Pricing from "./pages/Pricing";
+import Downloads from "./pages/Downloads";
+import VisaServices from "./pages/VisaServices";
 import AdminLeads from "./pages/AdminLeads";
 import NotFound from "./pages/NotFound";
 
@@ -37,6 +40,9 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/downloads" element={<Downloads />} />
+              <Route path="/visa" element={<VisaServices />} />
               <Route path="/admin/leads" element={<AdminLeads />} />
             </Route>
             <Route path="*" element={<NotFound />} />

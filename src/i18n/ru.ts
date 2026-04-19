@@ -1,4 +1,5 @@
 import { TranslationKeys } from "./types";
+import { pricingPageEN, downloadsPageEN, visaPageEN } from "./extra-en";
 
 export const ru: TranslationKeys = {
   nav: {
@@ -10,6 +11,9 @@ export const ru: TranslationKeys = {
     clients: "Клиенты",
     contact: "Контакты",
     privacy: "Конфиденциальность",
+    pricing: "Цены",
+    downloads: "Загрузки",
+    visa: "Визовые услуги",
   },
   hero: {
     badge: "ГЛОБАЛЬНОЕ ПРЕВОСХОДСТВО ИЗ ОАЭ",
@@ -188,4 +192,7 @@ export const ru: TranslationKeys = {
     ],
     contactNote: "Запросы по конфиденциальности: для любых вопросов используйте страницу контактов. Зарегистрированный офис: Business Centre, SPCFZ, Шарджа, ОАЭ. Лицензия № 4423928.01.",
   },
+  pricingPage: pricingPageEN,
+  downloadsPage: downloadsPageEN,
+  visaPage: visaPageEN,
 };
