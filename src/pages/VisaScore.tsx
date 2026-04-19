@@ -376,6 +376,22 @@ type Destination = {
   badgeLabel?: string;
   insuranceNote: string;
   profile: string;
+  /** Subtle flag-inspired gradient (used as card background tint) */
+  gradient: string;
+};
+
+// Subtle flag-color gradients (low opacity so cards blend with theme)
+const G = {
+  schengen: "linear-gradient(135deg, hsl(220 80% 35% / 0.22), hsl(48 95% 55% / 0.18))",
+  uk:       "linear-gradient(135deg, hsl(220 70% 30% / 0.22), hsl(0 75% 45% / 0.20), hsl(0 0% 100% / 0.10))",
+  ireland:  "linear-gradient(135deg, hsl(140 60% 35% / 0.22), hsl(0 0% 100% / 0.10), hsl(28 90% 55% / 0.20))",
+  turkey:   "linear-gradient(135deg, hsl(0 80% 40% / 0.30), hsl(0 70% 30% / 0.15))",
+  saudi:    "linear-gradient(135deg, hsl(140 70% 22% / 0.30), hsl(140 60% 30% / 0.18))",
+  uae:      "linear-gradient(135deg, hsl(140 60% 30% / 0.22), hsl(0 0% 100% / 0.10), hsl(0 70% 40% / 0.18), hsl(0 0% 0% / 0.20))",
+  canada:   "linear-gradient(135deg, hsl(0 75% 40% / 0.28), hsl(0 0% 100% / 0.10), hsl(0 75% 40% / 0.22))",
+  australia:"linear-gradient(135deg, hsl(220 70% 25% / 0.28), hsl(0 70% 40% / 0.18), hsl(0 0% 100% / 0.08))",
+  usa:      "linear-gradient(135deg, hsl(220 70% 28% / 0.25), hsl(0 0% 100% / 0.08), hsl(0 75% 40% / 0.22))",
+  china:    "linear-gradient(135deg, hsl(0 80% 38% / 0.30), hsl(48 95% 55% / 0.18))",
 };
 
 const DESTINATIONS: Destination[] = [
@@ -383,53 +399,118 @@ const DESTINATIONS: Destination[] = [
     categories: ["Tourism","Business","Medical","Student","Family Visit"],
     funds: "€50–100/day", threshold: 65, badge: "hot", badgeLabel: "High Demand",
     insuranceNote: "Mandatory: €30,000 min medical coverage",
-    profile: "26 EU countries. Tourism is the #1 category. Travel insurance mandatory. Strict financial proof required." },
+    profile: "26 EU countries. Tourism is the #1 category. Travel insurance mandatory. Strict financial proof required.",
+    gradient: G.schengen },
   { id: "uk", flag: "🇬🇧", name: "United Kingdom",
     categories: ["Tourism","Business","Medical Treatment","Student","Family Visit","Transit"],
     funds: "£100/day", threshold: 68, badge: "hot", badgeLabel: "High Demand",
     insuranceNote: "Highly recommended. Full trip coverage.",
-    profile: "Standard Visitor Visa. Home country ties weighted heavily. Biometrics required at VFS." },
+    profile: "Standard Visitor Visa. Home country ties weighted heavily. Biometrics required at VFS.",
+    gradient: G.uk },
   { id: "ireland", flag: "🇮🇪", name: "Ireland",
     categories: ["Tourism","Business","Medical","Student","Family Visit","Transit"],
     funds: "€50–100/day", threshold: 70, badge: null,
     insuranceNote: "Strongly recommended.",
-    profile: "Conservative assessment. Source of funds scrutinized closely. High refusal rate for weak profiles." },
+    profile: "Conservative assessment. Source of funds scrutinized closely. High refusal rate for weak profiles.",
+    gradient: G.ireland },
   { id: "turkey", flag: "🇹🇷", name: "Turkey",
     categories: ["Tourism","Business","Medical","Student","Transit"],
     funds: "$50/day", threshold: 55, badge: "hot", badgeLabel: "High Demand",
     insuranceNote: "Recommended.",
-    profile: "e-Visa available for many nationalities. Popular tourism & medical destination. GCC residents often eligible." },
+    profile: "e-Visa available for many nationalities. Popular tourism & medical destination. GCC residents often eligible.",
+    gradient: G.turkey },
   { id: "saudi", flag: "🇸🇦", name: "Saudi Arabia",
     categories: ["Tourism","Business","Hajj","Umrah","Residence / Iqama","Family Visit","Medical","Work"],
     funds: "SAR 200/day", threshold: 60, badge: "hajj", badgeLabel: "Hajj / Umrah",
     insuranceNote: "Required by MOFA. Hajj/Umrah insurance mandatory for pilgrims.",
-    profile: "Multiple visa categories. Hajj & Umrah via specialist partners. Iqama (residence) requires employer sponsorship. Tourist e-visa available." },
+    profile: "Multiple visa categories. Hajj & Umrah via specialist partners. Iqama (residence) requires employer sponsorship. Tourist e-visa available.",
+    gradient: G.saudi },
   { id: "uae", flag: "🇦🇪", name: "UAE",
     categories: ["Tourism","Business","Residence / Golden Visa","Family Sponsorship","Medical","Student","Transit"],
     funds: "AED 300/day", threshold: 55, badge: null,
     insuranceNote: "Recommended for all visitors.",
-    profile: "Entry visa, residence visa, and Golden Visa categories available. Business setup services via SHAHMCO. GCC residents may enter visa-free." },
+    profile: "Entry visa, residence visa, and Golden Visa categories available. Business setup services via SHAHMCO. GCC residents may enter visa-free.",
+    gradient: G.uae },
   { id: "canada", flag: "🇨🇦", name: "Canada",
     categories: ["Tourism","Business","Student","Family Sponsorship","Medical","PR / Immigration","Transit"],
     funds: "CAD 100/day", threshold: 72, badge: "hot", badgeLabel: "High Demand",
     insuranceNote: "Highly recommended.",
-    profile: "TRV (Visitor Visa) or eTA. High financial bar. Biometrics required. Strong ties to home country are critical." },
+    profile: "TRV (Visitor Visa) or eTA. High financial bar. Biometrics required. Strong ties to home country are critical.",
+    gradient: G.canada },
   { id: "australia", flag: "🇦🇺", name: "Australia",
     categories: ["Tourism","Business","Student","Medical","Family Visit","Skilled Migration"],
     funds: "AUD 100/day", threshold: 70, badge: null,
     insuranceNote: "Highly recommended.",
-    profile: "Subclass 600 tourist visa. GTE (Genuine Temporary Entrant) criterion assessed strictly. Strong ties required." },
+    profile: "Subclass 600 tourist visa. GTE (Genuine Temporary Entrant) criterion assessed strictly. Strong ties required.",
+    gradient: G.australia },
   { id: "usa", flag: "🇺🇸", name: "USA",
     categories: ["Tourism (B2)","Business (B1)","Student (F1)","Medical","Family Visit","Transit (C)"],
     funds: "$100/day", threshold: 70, badge: null,
     insuranceNote: "Strongly recommended.",
-    profile: "DS-160 form. Embassy interview required. Strong financial & social ties assessed. Refusal rate high for first-time applicants." },
+    profile: "DS-160 form. Embassy interview required. Strong financial & social ties assessed. Refusal rate high for first-time applicants.",
+    gradient: G.usa },
   { id: "china", flag: "🇨🇳", name: "China",
     categories: ["Tourism (L)","Business (M)","Student (X)","Work (Z)","Family Visit (Q)","Transit"],
     funds: "CNY 500/day", threshold: 58, badge: null,
     insuranceNote: "Recommended.",
-    profile: "L (tourist) or M (business) visa most common. Invitation letter often required. Full itinerary and financial proof submitted." },
+    profile: "L (tourist) or M (business) visa most common. Invitation letter often required. Full itinerary and financial proof submitted.",
+    gradient: G.china },
 ];
+
+// ── Country name & badge translations ──
+const COUNTRY_I18N: Record<Language, Record<string, string>> = {
+  en: { schengen:"Schengen Zone", uk:"United Kingdom", ireland:"Ireland", turkey:"Turkey",
+        saudi:"Saudi Arabia", uae:"UAE", canada:"Canada", australia:"Australia", usa:"USA", china:"China" },
+  ar: { schengen:"منطقة شنغن", uk:"المملكة المتحدة", ireland:"أيرلندا", turkey:"تركيا",
+        saudi:"المملكة العربية السعودية", uae:"الإمارات", canada:"كندا", australia:"أستراليا", usa:"الولايات المتحدة", china:"الصين" },
+  ru: { schengen:"Шенгенская зона", uk:"Великобритания", ireland:"Ирландия", turkey:"Турция",
+        saudi:"Саудовская Аравия", uae:"ОАЭ", canada:"Канада", australia:"Австралия", usa:"США", china:"Китай" },
+  zh: { schengen:"申根区", uk:"英国", ireland:"爱尔兰", turkey:"土耳其",
+        saudi:"沙特阿拉伯", uae:"阿联酋", canada:"加拿大", australia:"澳大利亚", usa:"美国", china:"中国" },
+};
+
+const BADGE_I18N: Record<Language, { hot: string; hajj: string }> = {
+  en: { hot: "High Demand", hajj: "Hajj / Umrah" },
+  ar: { hot: "إقبال عالٍ", hajj: "حج / عمرة" },
+  ru: { hot: "Высокий спрос", hajj: "Хадж / Умра" },
+  zh: { hot: "高需求", hajj: "朝觐 / 副朝" },
+};
+
+// Visa category translations (canonical EN key → translated label)
+const CATEGORY_I18N: Record<Language, Record<string, string>> = {
+  en: {
+    "Tourism":"Tourism","Business":"Business","Medical":"Medical","Student":"Student","Family Visit":"Family Visit",
+    "Medical Treatment":"Medical Treatment","Transit":"Transit","Hajj":"Hajj","Umrah":"Umrah",
+    "Residence / Iqama":"Residence / Iqama","Work":"Work","Residence / Golden Visa":"Residence / Golden Visa",
+    "Family Sponsorship":"Family Sponsorship","PR / Immigration":"PR / Immigration","Skilled Migration":"Skilled Migration",
+    "Tourism (B2)":"Tourism (B2)","Business (B1)":"Business (B1)","Student (F1)":"Student (F1)","Transit (C)":"Transit (C)",
+    "Tourism (L)":"Tourism (L)","Business (M)":"Business (M)","Student (X)":"Student (X)","Work (Z)":"Work (Z)","Family Visit (Q)":"Family Visit (Q)",
+  },
+  ar: {
+    "Tourism":"سياحة","Business":"أعمال","Medical":"علاج","Student":"دراسة","Family Visit":"زيارة عائلية",
+    "Medical Treatment":"علاج طبي","Transit":"عبور","Hajj":"حج","Umrah":"عمرة",
+    "Residence / Iqama":"إقامة","Work":"عمل","Residence / Golden Visa":"إقامة / ذهبية",
+    "Family Sponsorship":"كفالة عائلية","PR / Immigration":"إقامة دائمة / هجرة","Skilled Migration":"هجرة مهارات",
+    "Tourism (B2)":"سياحة (B2)","Business (B1)":"أعمال (B1)","Student (F1)":"دراسة (F1)","Transit (C)":"عبور (C)",
+    "Tourism (L)":"سياحة (L)","Business (M)":"أعمال (M)","Student (X)":"دراسة (X)","Work (Z)":"عمل (Z)","Family Visit (Q)":"زيارة عائلية (Q)",
+  },
+  ru: {
+    "Tourism":"Туризм","Business":"Бизнес","Medical":"Лечение","Student":"Учёба","Family Visit":"Визит к семье",
+    "Medical Treatment":"Лечение","Transit":"Транзит","Hajj":"Хадж","Umrah":"Умра",
+    "Residence / Iqama":"ВНЖ / Икама","Work":"Работа","Residence / Golden Visa":"ВНЖ / Золотая виза",
+    "Family Sponsorship":"Воссоединение семьи","PR / Immigration":"ПМЖ / Иммиграция","Skilled Migration":"Квалиф. миграция",
+    "Tourism (B2)":"Туризм (B2)","Business (B1)":"Бизнес (B1)","Student (F1)":"Студент (F1)","Transit (C)":"Транзит (C)",
+    "Tourism (L)":"Туризм (L)","Business (M)":"Бизнес (M)","Student (X)":"Студент (X)","Work (Z)":"Работа (Z)","Family Visit (Q)":"Визит (Q)",
+  },
+  zh: {
+    "Tourism":"旅游","Business":"商务","Medical":"就医","Student":"学生","Family Visit":"探亲",
+    "Medical Treatment":"医疗","Transit":"过境","Hajj":"朝觐","Umrah":"副朝",
+    "Residence / Iqama":"居留 / 伊卡马","Work":"工作","Residence / Golden Visa":"居留 / 黄金签证",
+    "Family Sponsorship":"家庭担保","PR / Immigration":"永居 / 移民","Skilled Migration":"技术移民",
+    "Tourism (B2)":"旅游 (B2)","Business (B1)":"商务 (B1)","Student (F1)":"学生 (F1)","Transit (C)":"过境 (C)",
+    "Tourism (L)":"旅游 (L)","Business (M)":"商务 (M)","Student (X)":"学生 (X)","Work (Z)":"工作 (Z)","Family Visit (Q)":"探亲 (Q)",
+  },
+};
 
 type Criterion = { id: string; sectionKey: keyof Pick<VS,"sect1"|"sect2"|"sect3"|"sect4">; sectionIcon: string; sectionPts: number; max: number; nameKey: keyof VS; descKey: keyof VS };
 
@@ -653,26 +734,35 @@ const VisaScore = () => {
             <p className="text-muted-foreground text-sm mb-8">{v.s1Sub}</p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
-              {DESTINATIONS.map((d) => (
-                <motion.button
-                  key={d.id}
-                  whileHover={{ y: -2 }}
-                  onClick={() => setSelectedDestId(d.id)}
-                  className={`relative text-start bg-card border rounded-xl p-4 transition-all ${
-                    selectedDestId === d.id ? "border-accent shadow-gold" : "border-border hover:border-primary/40"
-                  }`}
-                >
-                  {d.badge && (
-                    <span className={`absolute top-2 end-2 text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full border ${
-                      d.badge === "hajj" ? "bg-accent/15 text-accent border-accent/30" : "bg-rose-500/15 text-rose-400 border-rose-500/30"
-                    }`}>{d.badgeLabel}</span>
-                  )}
-                  <div className="text-2xl mb-2">{d.flag}</div>
-                  <div className="font-heading font-semibold text-foreground text-sm">{d.name}</div>
-                  <div className="text-[10px] text-muted-foreground mt-1 uppercase tracking-wider">{v.s1Threshold} {d.threshold}/100</div>
-                  <div className="text-[11px] text-accent mt-1.5">{d.funds}</div>
-                </motion.button>
-              ))}
+              {DESTINATIONS.map((d) => {
+                const localName = COUNTRY_I18N[language][d.id] ?? d.name;
+                const localBadge = d.badge === "hot" ? BADGE_I18N[language].hot : d.badge === "hajj" ? BADGE_I18N[language].hajj : null;
+                return (
+                  <motion.button
+                    key={d.id}
+                    whileHover={{ y: -2 }}
+                    onClick={() => setSelectedDestId(d.id)}
+                    style={{ backgroundImage: d.gradient }}
+                    className={`relative text-start bg-card border rounded-xl p-4 transition-all overflow-hidden ${
+                      selectedDestId === d.id ? "border-accent shadow-gold" : "border-border hover:border-primary/40"
+                    }`}
+                  >
+                    {/* Subtle dark overlay so flag gradient stays a tint, not a wash */}
+                    <span className="absolute inset-0 bg-card/55 pointer-events-none" aria-hidden />
+                    <span className="relative block">
+                      {d.badge && (
+                        <span className={`absolute top-0 end-0 text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full border ${
+                          d.badge === "hajj" ? "bg-accent/15 text-accent border-accent/30" : "bg-rose-500/15 text-rose-400 border-rose-500/30"
+                        }`}>{localBadge}</span>
+                      )}
+                      <span className="block text-2xl mb-2">{d.flag}</span>
+                      <span className="block font-heading font-semibold text-foreground text-sm">{localName}</span>
+                      <span className="block text-[10px] text-muted-foreground mt-1 uppercase tracking-wider">{v.s1Threshold} {d.threshold}/100</span>
+                      <span className="block text-[11px] text-accent mt-1.5">{d.funds}</span>
+                    </span>
+                  </motion.button>
+                );
+              })}
             </div>
 
             <div className="flex justify-end">
@@ -691,7 +781,7 @@ const VisaScore = () => {
           <motion.div key="s2" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
             <div className="max-w-xl mx-auto bg-card border border-accent/30 rounded-2xl p-8 shadow-card">
               <h3 className="font-heading text-2xl text-foreground mb-1">{v.s2Title}</h3>
-              <p className="text-muted-foreground text-sm mb-6">{v.s2For} <span className="text-accent">{dest.flag} {dest.name}</span> — {v.s2Intro}</p>
+              <p className="text-muted-foreground text-sm mb-6">{v.s2For} <span className="text-accent">{dest.flag} {COUNTRY_I18N[language][dest.id] ?? dest.name}</span> — {v.s2Intro}</p>
 
               <div className="space-y-4">
                 {[
@@ -721,7 +811,7 @@ const VisaScore = () => {
                     className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-foreground text-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
                   >
                     <option value="">{v.s2CatP}</option>
-                    {dest.categories.map((c) => <option key={c} value={c}>{c}</option>)}
+                    {dest.categories.map((c) => <option key={c} value={c}>{CATEGORY_I18N[language][c] ?? c}</option>)}
                   </select>
                   {errors.category && <p className="text-rose-400 text-xs mt-1">{errors.category}</p>}
                 </div>
@@ -771,7 +861,7 @@ const VisaScore = () => {
               </div>
               <div className="bg-card border border-border rounded-xl p-5 border-t-2 border-t-border">
                 <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{v.s3Dest}</div>
-                <div className="font-heading text-foreground">{dest.flag} {dest.name}</div>
+                <div className="font-heading text-foreground">{dest.flag} {COUNTRY_I18N[language][dest.id] ?? dest.name}</div>
                 <p className="text-xs text-muted-foreground mt-2 leading-relaxed">{dest.profile}</p>
               </div>
             </div>
