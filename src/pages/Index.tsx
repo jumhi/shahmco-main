@@ -298,7 +298,7 @@ const Index = () => {
       </Section>
 
       {/* CTA */}
-      <Section className="bg-gradient-purple relative overflow-hidden">
+      <Section className="relative overflow-hidden border-y border-border/40">
         <div className="absolute inset-0">
           <div className="absolute top-0 end-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
           <div className="absolute bottom-0 start-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
