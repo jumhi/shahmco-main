@@ -8,13 +8,17 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { ShieldCheck, Lock, Mail } from "lucide-react";
 import afwaajLogo from "@/assets/partners/afwaaj.png";
-import sultanLogo from "@/assets/partners/sultan-global.jpeg";
-import hamumyLogo from "@/assets/partners/al-hamumy.jpeg";
+import sultanLogo from "@/assets/partners/sultan-global.png";
+import hamumyLogo from "@/assets/partners/al-hamumy.png";
+import coastHajjLogo from "@/assets/partners/coast-hajj.png";
+import northCoastLogo from "@/assets/partners/north-coast.png";
 
 const PARTNERS = [
-  { name: "AFWAAJ", logo: afwaajLogo, tag: "Strategic Affiliate" },
-  { name: "Sultan Group Global", logo: sultanLogo, tag: "Corporate Partner" },
-  { name: "AL-HAMUMY LTD", logo: hamumyLogo, tag: "Travel & Visa Partner" },
+  { name: "Coast Hajj Affairs", logo: coastHajjLogo, tag: "Hajj & Umrah Affairs" },
+  { name: "AFWAAJ Group", logo: afwaajLogo, tag: "Hajj & Umrah Elite Services" },
+  { name: "North Coast Travel", logo: northCoastLogo, tag: "IATA Accredited Agent" },
+  { name: "Sultan Global Group", logo: sultanLogo, tag: "Corporate Partner" },
+  { name: "AL-HAMUMY LTD", logo: hamumyLogo, tag: "Travel & Visa Services" },
 ];
 
 // ═══════════════════════════════════════ DATA ═══════════════════════════════════════
