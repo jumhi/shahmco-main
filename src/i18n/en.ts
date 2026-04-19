@@ -11,7 +11,7 @@ export const en: TranslationKeys = {
     clients: "Clients",
     contact: "Contact",
     privacy: "Privacy",
-    pricing: "Pricing",
+    pricing: "Products",
     downloads: "Downloads",
     visa: "Visa Services",
   },

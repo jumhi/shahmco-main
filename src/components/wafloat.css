@@ -1,0 +1,96 @@
+.wa-pill {
+  position: fixed;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 48px;
+  padding: 16px 0;
+  border-radius: 999px;
+  background: hsl(var(--secondary) / 0.6);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid hsl(142 70% 45% / 0.4);
+  box-shadow:
+    0 10px 40px -12px hsl(0 0% 0% / 0.7),
+    0 0 24px hsl(142 70% 45% / 0.25),
+    inset 0 1px 0 hsl(0 0% 100% / 0.08);
+  text-decoration: none;
+  transition: width 220ms ease-out, border-color 220ms, box-shadow 220ms, transform 220ms ease-out;
+}
+
+.wa-pill:hover {
+  width: 56px;
+  border-color: hsl(142 70% 45%);
+  box-shadow:
+    0 12px 48px -10px hsl(0 0% 0% / 0.8),
+    0 0 38px hsl(142 70% 45% / 0.42),
+    inset 0 1px 0 hsl(0 0% 100% / 0.12);
+}
+.wa-pill:hover .wa-pulse { animation-play-state: paused; opacity: 0; }
+
+.wa-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, hsl(142 70% 45%), hsl(148 60% 40%));
+  color: white;
+  box-shadow:
+    0 4px 14px hsl(148 70% 45% / 0.45),
+    inset 0 1px 0 hsl(0 0% 100% / 0.25);
+  position: relative;
+  z-index: 2;
+}
+
+.wa-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-body, inherit);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: hsl(var(--muted-foreground));
+  user-select: none;
+}
+
+.wa-pulse {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  margin-left: -18px;
+  border-radius: 50%;
+  background: hsl(142 70% 45%);
+  opacity: 0;
+  animation: wa-pulse 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes wa-pulse {
+  0%   { transform: scale(1);   opacity: 0.55; }
+  70%  { transform: scale(1.9); opacity: 0;   }
+  100% { transform: scale(1.9); opacity: 0;   }
+}
+
+[dir="rtl"] .wa-pill {
+  right: auto;
+  left: 16px;
+}
+
+@media (max-width: 640px) {
+  .wa-pill { padding: 10px 0; width: 48px; }
+  .wa-text { display: none; }
+  .wa-pill:hover { width: 48px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-pulse { animation: none; display: none; }
+}
