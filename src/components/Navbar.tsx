@@ -13,14 +13,11 @@ const Navbar = () => {
 
   const navItems = [
     { label: t.nav.home, path: "/" },
-    { label: t.nav.about, path: "/about" },
     { label: t.nav.services, path: "/services" },
     { label: t.nav.pricing, path: "/pricing" },
     { label: t.nav.downloads, path: "/downloads" },
     { label: t.nav.visa, path: "/visa" },
-    { label: t.nav.howWeWork, path: "/how-we-work" },
-    { label: t.nav.compliance, path: "/compliance" },
-    { label: t.nav.clients, path: "/clients" },
+    { label: t.nav.about, path: "/about" },
     { label: t.nav.contact, path: "/contact" },
   ];
 
