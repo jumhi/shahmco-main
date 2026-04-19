@@ -67,6 +67,7 @@ export const pricingPageEN: TranslationKeys["pricingPage"] = {
         "VAT return summary export",
         "Full API access",
         "Multi-entity & branch support",
+        "Custom website & e-commerce build",
       ],
       excluded: [],
     },
