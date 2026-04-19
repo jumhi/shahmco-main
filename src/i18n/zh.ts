@@ -12,7 +12,7 @@ export const zh: TranslationKeys = {
     contact: "联系我们",
     privacy: "隐私",
     pricing: "产品",
-    downloads: "下载",
+    downloads: "B2C",
     visa: "签证服务",
   },
   hero: {

@@ -12,7 +12,7 @@ export const ru: TranslationKeys = {
     contact: "Контакты",
     privacy: "Конфиденциальность",
     pricing: "Продукты",
-    downloads: "Загрузки",
+    downloads: "B2C",
     visa: "Визовые услуги",
   },
   hero: {
