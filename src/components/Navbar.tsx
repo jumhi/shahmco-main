@@ -17,6 +17,7 @@ const Navbar = () => {
     { label: t.nav.services, path: "/services" },
     { label: t.nav.downloads, path: "/b2c" },
     { label: t.nav.visa, path: "/visa" },
+    { label: "VisaScore", path: "/visascore.html", external: true },
     { label: t.nav.howWeWork, path: "/how-we-work" },
     { label: t.nav.compliance, path: "/compliance" },
     { label: t.nav.contact, path: "/contact" },
@@ -40,26 +41,38 @@ const Navbar = () => {
 
         {/* Desktop */}
         <div className="hidden xl:flex items-center gap-1">
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`relative px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 ${
-                location.pathname === item.path
-                  ? "text-accent"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {item.label}
-              {location.pathname === item.path && (
-                <motion.div
-                  layoutId="activeNav"
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-accent rounded-full"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-            </Link>
-          ))}
+          {navItems.map((item) =>
+            item.external ? (
+              <a
+                key={item.path}
+                href={item.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 text-accent hover:text-accent/80"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`relative px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 ${
+                  location.pathname === item.path
+                    ? "text-accent"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {item.label}
+                {location.pathname === item.path && (
+                  <motion.div
+                    layoutId="activeNav"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-accent rounded-full"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+              </Link>
+            )
+          )}
         </div>
 
         <div className="flex items-center gap-3">
@@ -99,17 +112,29 @@ const Navbar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
                 >
-                  <Link
-                    to={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all ${
-                      location.pathname === item.path
-                        ? "text-accent bg-secondary"
-                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/30"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
+                  {item.external ? (
+                    <a
+                      href={item.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsOpen(false)}
+                      className="block px-4 py-3 text-sm font-medium rounded-lg text-accent hover:bg-secondary/30 transition-all"
+                    >
+                      {item.label} →
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all ${
+                        location.pathname === item.path
+                          ? "text-accent bg-secondary"
+                          : "text-muted-foreground hover:text-foreground hover:bg-secondary/30"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
               <motion.div
