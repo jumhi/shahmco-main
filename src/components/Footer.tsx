@@ -13,10 +13,16 @@ const Footer = () => {
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <img src={logo} alt="Shahmco Global" className="h-10 w-auto object-contain" />
-              <span className="text-gradient-gold font-heading text-lg font-bold">SHAHMCO</span>
+              <div>
+                <span className="text-gradient-gold font-heading text-lg font-bold block leading-tight">SHAHMCO</span>
+                <span className="text-muted-foreground text-[9px] tracking-[0.2em]">CORPORATE ADVISORY & SOFTWARE SOLUTIONS</span>
+              </div>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               {t.footer.description}
+            </p>
+            <p className="text-[10px] text-muted-foreground/70 font-mono mt-3">
+              Shahmco Global FZC LLC · License No. 4423928.01 · SPCFZ, Sharjah, UAE
             </p>
           </div>
 
