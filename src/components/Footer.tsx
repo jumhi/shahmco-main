@@ -44,6 +44,8 @@ const Footer = () => {
             <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li>{t.footer.address1}</li>
               <li>{t.footer.address2}</li>
+              <li><a href="mailto:info@shahmco.com" className="hover:text-foreground transition-colors duration-300">info@shahmco.com</a></li>
+              <li><a href="https://wa.me/971567878746" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors duration-300">+971 56 787 8746</a></li>
               <li><Link to="/contact" className="text-accent hover:text-foreground transition-colors duration-300">{t.footer.getInTouch}</Link></li>
             </ul>
           </div>
@@ -55,8 +57,14 @@ const Footer = () => {
           viewport={{ once: true }}
           className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4"
         >
-          <p className="text-muted-foreground text-xs">{t.footer.rights}</p>
-          <Link to="/terms" className="text-muted-foreground text-xs hover:text-foreground transition-colors">{t.footer.terms}</Link>
+          <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center">
+            <p className="text-muted-foreground text-xs">{t.footer.rights}</p>
+            <p className="text-muted-foreground/70 text-xs font-mono">{t.footer.licenseLine}</p>
+          </div>
+          <div className="flex gap-4">
+            <Link to="/terms" className="text-muted-foreground text-xs hover:text-foreground transition-colors">{t.footer.terms}</Link>
+            <Link to="/privacy" className="text-muted-foreground text-xs hover:text-foreground transition-colors">{t.footer.privacy}</Link>
+          </div>
         </motion.div>
       </div>
     </footer>
