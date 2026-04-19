@@ -67,6 +67,11 @@ export const zh: TranslationKeys = {
     title: "预约咨询",
     subtitle: "与我们的企业咨询团队联系，确定您的项目范围和运营需求。",
     button: "联系我们的团队",
+    foundationLabel: "我们的基础",
+    foundationTitle: "我们整合数字专业能力、全球网络与战略合作，",
+    foundationHighlight: "支持企业在每个成长阶段。",
+    foundationBrowse: "浏览产品",
+    foundationView: "查看全部服务",
   },
   about: {
     label: "关于我们",
