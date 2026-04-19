@@ -285,19 +285,6 @@ const VisaServices = () => {
           </div>
         </FadeIn>
       </Section>
-
-      {/* Floating VisaScore Pro CTA */}
-      <Link
-        to="/visa-score"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="visa-score-pill"
-        aria-label="VisaScore Pro"
-      >
-        <Sparkles size={16} className="text-background" />
-        <span>{v.visaScoreCTA}</span>
-        <ArrowRight size={14} className="text-background" />
-      </Link>
     </>
   );
 };
