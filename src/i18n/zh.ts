@@ -1,4 +1,5 @@
 import { TranslationKeys } from "./types";
+import { pricingPageEN, downloadsPageEN, visaPageEN } from "./extra-en";
 
 export const zh: TranslationKeys = {
   nav: {
@@ -191,4 +192,7 @@ export const zh: TranslationKeys = {
     ],
     contactNote: "隐私查询：有关本隐私政策或您个人数据的任何问题，请使用我们的联系页面。注册办事处：Business Centre, SPCFZ, 沙迦, 阿联酋。许可证号 4423928.01。",
   },
+  pricingPage: pricingPageEN,
+  downloadsPage: downloadsPageEN,
+  visaPage: visaPageEN,
 };

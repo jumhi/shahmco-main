@@ -1,4 +1,5 @@
 import { TranslationKeys } from "./types";
+import { pricingPageAR, downloadsPageAR, visaPageAR } from "./extra-ar";
 
 export const ar: TranslationKeys = {
   nav: {
@@ -350,4 +351,7 @@ export const ar: TranslationKeys = {
     contactNote:
       "استفسارات الخصوصية: لأي أسئلة بخصوص سياسة الخصوصية هذه أو بياناتك الشخصية، يرجى استخدام صفحة التواصل. المكتب المسجَّل: مركز الأعمال، المنطقة الحرة لمدينة الشارقة للنشر (SPCFZ)، الشارقة، الإمارات. رقم الترخيص 4423928.01.",
   },
+  pricingPage: pricingPageAR,
+  downloadsPage: downloadsPageAR,
+  visaPage: visaPageAR,
 };
