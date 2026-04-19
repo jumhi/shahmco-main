@@ -781,7 +781,7 @@ const VisaScore = () => {
           <motion.div key="s2" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
             <div className="max-w-xl mx-auto bg-card border border-accent/30 rounded-2xl p-8 shadow-card">
               <h3 className="font-heading text-2xl text-foreground mb-1">{v.s2Title}</h3>
-              <p className="text-muted-foreground text-sm mb-6">{v.s2For} <span className="text-accent">{dest.flag} {dest.name}</span> — {v.s2Intro}</p>
+              <p className="text-muted-foreground text-sm mb-6">{v.s2For} <span className="text-accent">{dest.flag} {COUNTRY_I18N[language][dest.id] ?? dest.name}</span> — {v.s2Intro}</p>
 
               <div className="space-y-4">
                 {[
@@ -811,7 +811,7 @@ const VisaScore = () => {
                     className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-foreground text-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
                   >
                     <option value="">{v.s2CatP}</option>
-                    {dest.categories.map((c) => <option key={c} value={c}>{c}</option>)}
+                    {dest.categories.map((c) => <option key={c} value={c}>{CATEGORY_I18N[language][c] ?? c}</option>)}
                   </select>
                   {errors.category && <p className="text-rose-400 text-xs mt-1">{errors.category}</p>}
                 </div>
@@ -861,7 +861,7 @@ const VisaScore = () => {
               </div>
               <div className="bg-card border border-border rounded-xl p-5 border-t-2 border-t-border">
                 <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{v.s3Dest}</div>
-                <div className="font-heading text-foreground">{dest.flag} {dest.name}</div>
+                <div className="font-heading text-foreground">{dest.flag} {COUNTRY_I18N[language][dest.id] ?? dest.name}</div>
                 <p className="text-xs text-muted-foreground mt-2 leading-relaxed">{dest.profile}</p>
               </div>
             </div>
