@@ -17,6 +17,7 @@ import Privacy from "./pages/Privacy";
 import Pricing from "./pages/Pricing";
 import B2C from "./pages/B2C";
 import VisaServices from "./pages/VisaServices";
+import VisaScore from "./pages/VisaScore";
 import AdminLeads from "./pages/AdminLeads";
 import NotFound from "./pages/NotFound";
 
@@ -45,6 +46,7 @@ const App = () => (
               <Route path="/downloads" element={<B2C />} />
               <Route path="/b2c" element={<B2C />} />
               <Route path="/visa" element={<VisaServices />} />
+              <Route path="/visa-score" element={<VisaScore />} />
               <Route path="/admin/leads" element={<AdminLeads />} />
             </Route>
             <Route path="*" element={<NotFound />} />
