@@ -18,6 +18,7 @@ export type TranslationKeys = {
     compliance: string;
     clients: string;
     contact: string;
+    privacy: string;
   };
   hero: {
     badge: string;
@@ -158,14 +159,25 @@ export type TranslationKeys = {
     getInTouch: string;
     rights: string;
     terms: string;
+    privacy: string;
+    legal: string;
     advisoryLink: string;
     coordinationLink: string;
     softwareLink: string;
+    licenseLine: string;
   };
   termsPage: {
     label: string;
     title1: string;
     title2: string;
     items: string[];
+  };
+  privacyPage: {
+    label: string;
+    title1: string;
+    title2: string;
+    meta: string;
+    sections: { h: string; paragraphs?: string[]; items?: string[] }[];
+    contactNote: string;
   };
 };

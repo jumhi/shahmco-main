@@ -82,8 +82,8 @@ const Contact = () => {
 
   const contactInfo = [
     { icon: MapPin, label: t.contactPage.address, value: t.contactPage.addressValue },
-    { icon: Mail, label: t.contactPage.email, value: "info@shahmco.com" },
-    { icon: Phone, label: t.contactPage.phone, value: t.contactPage.phoneValue },
+    { icon: Mail, label: t.contactPage.email, value: "info@shahmco.com", href: "mailto:info@shahmco.com" },
+    { icon: Phone, label: t.contactPage.phone, value: "+971 56 787 8746", href: "https://wa.me/971567878746" },
   ];
 
   const inputClass =
@@ -112,11 +112,22 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium text-foreground text-sm">{item.label}</p>
-                    <p className="text-muted-foreground text-sm">{item.value}</p>
+                    {item.href ? (
+                      <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="text-muted-foreground text-sm hover:text-accent transition-colors">{item.value}</a>
+                    ) : (
+                      <p className="text-muted-foreground text-sm">{item.value}</p>
+                    )}
                   </div>
                 </motion.div>
               </FadeIn>
             ))}
+            <FadeIn delay={0.4}>
+              <div className="mt-6 pt-6 border-t border-border space-y-1.5 text-xs font-mono text-muted-foreground/80">
+                <div className="flex justify-between"><span>LICENSE</span><span>4423928.01</span></div>
+                <div className="flex justify-between"><span>JURISDICTION</span><span>SPCFZ · UAE</span></div>
+                <div className="flex justify-between"><span>TAX TRN</span><span>105208778800001</span></div>
+              </div>
+            </FadeIn>
           </div>
         </div>
 
