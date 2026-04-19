@@ -10,6 +10,9 @@ export const ru: TranslationKeys = {
     clients: "Клиенты",
     contact: "Контакты",
     privacy: "Конфиденциальность",
+    pricing: "Цены",
+    downloads: "Загрузки",
+    visa: "Визовые услуги",
   },
   hero: {
     badge: "ГЛОБАЛЬНОЕ ПРЕВОСХОДСТВО ИЗ ОАЭ",

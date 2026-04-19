@@ -10,6 +10,9 @@ export const zh: TranslationKeys = {
     clients: "客户",
     contact: "联系我们",
     privacy: "隐私",
+    pricing: "定价",
+    downloads: "下载",
+    visa: "签证服务",
   },
   hero: {
     badge: "立足阿联酋 · 放眼全球",

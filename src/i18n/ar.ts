@@ -10,6 +10,9 @@ export const ar: TranslationKeys = {
     clients: "العملاء",
     contact: "اتصل بنا",
     privacy: "الخصوصية",
+    pricing: "الأسعار",
+    downloads: "التنزيلات",
+    visa: "خدمات التأشيرات",
   },
   hero: {
     badge: "تميّز عالمي من الإمارات · مرخّص من SPCFZ",

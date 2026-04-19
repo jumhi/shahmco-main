@@ -10,6 +10,9 @@ export const en: TranslationKeys = {
     clients: "Clients",
     contact: "Contact",
     privacy: "Privacy",
+    pricing: "Pricing",
+    downloads: "Downloads",
+    visa: "Visa Services",
   },
   hero: {
     badge: "UAE-BASED GLOBAL EXCELLENCE · SPCFZ LICENSED",
