@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowRight, Globe, CheckCircle2, ClipboardList, RefreshCw, Search, MessageSquare } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Globe, CheckCircle2, ClipboardList, RefreshCw, Search, MessageSquare, Sparkles, Clock, Calendar, FileCheck, X } from "lucide-react";
 import {
   Section,
   SectionTitle,
@@ -16,6 +17,9 @@ const whyIcons = [CheckCircle2, ClipboardList, RefreshCw, Search, Globe, Message
 const VisaServices = () => {
   const { t } = useLanguage();
   const v = t.visaPage;
+  const [activeCountry, setActiveCountry] = useState<string | null>(null);
+
+  const detail = v.countryDetails?.find((c) => c.code === activeCountry);
 
   return (
     <>
@@ -55,19 +59,104 @@ const VisaServices = () => {
         <SectionSubtitle>{v.destSubtitle}</SectionSubtitle>
 
         <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {v.destinations.map((d) => (
-            <StaggerItem key={d.code}>
-              <motion.div
-                whileHover={{ y: -4, borderColor: "hsl(43 85% 55% / 0.3)" }}
-                className="bg-card border border-border rounded-xl p-5 shadow-card transition-all"
-              >
-                <div className="font-mono text-accent text-xs mb-2">{d.code}</div>
-                <div className="font-heading font-semibold text-foreground">{d.name}</div>
-                <div className="text-muted-foreground text-xs mt-1">{d.tag}</div>
-              </motion.div>
-            </StaggerItem>
-          ))}
+          {v.destinations.map((d) => {
+            const isActive = activeCountry === d.code;
+            const hasDetail = v.countryDetails?.some((c) => c.code === d.code);
+            return (
+              <StaggerItem key={d.code}>
+                <motion.button
+                  whileHover={{ y: -4 }}
+                  onClick={() => hasDetail && setActiveCountry(isActive ? null : d.code)}
+                  className={`w-full text-start bg-card border rounded-xl p-5 shadow-card transition-all ${
+                    isActive
+                      ? "border-accent shadow-glow"
+                      : "border-border hover:border-accent/30"
+                  } ${hasDetail ? "cursor-pointer" : "cursor-default opacity-70"}`}
+                >
+                  <div className="font-mono text-accent text-xs mb-2">{d.code}</div>
+                  <div className="font-heading font-semibold text-foreground">{d.name}</div>
+                  <div className="text-muted-foreground text-xs mt-1">{d.tag}</div>
+                  {hasDetail && (
+                    <div className="text-[10px] text-accent mt-2 font-mono">
+                      {isActive ? "▼ HIDE DETAILS" : "▶ VIEW DETAILS"}
+                    </div>
+                  )}
+                </motion.button>
+              </StaggerItem>
+            );
+          })}
         </StaggerContainer>
+
+        {/* Country Detail Panel */}
+        <AnimatePresence>
+          {detail && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.35 }}
+              className="overflow-hidden mt-6"
+            >
+              <div className="bg-card border border-accent/30 rounded-2xl p-6 md:p-8 shadow-glow">
+                <div className="flex items-start justify-between mb-6">
+                  <div>
+                    <p className="text-accent font-heading text-xs tracking-widest mb-2">{v.detailLabel}</p>
+                    <h3 className="font-heading text-2xl font-bold text-foreground">{detail.name}</h3>
+                  </div>
+                  <button
+                    onClick={() => setActiveCountry(null)}
+                    className="p-2 rounded-lg hover:bg-secondary/50 transition-colors"
+                    aria-label="Close"
+                  >
+                    <X size={18} className="text-muted-foreground" />
+                  </button>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  {detail.types.map((type) => (
+                    <div
+                      key={type.cat}
+                      className="bg-secondary/30 border border-border rounded-xl p-5"
+                    >
+                      <h4 className="font-heading font-semibold text-foreground mb-3">{type.cat}</h4>
+                      <div className="space-y-3 text-sm">
+                        <div>
+                          <div className="flex items-center gap-2 text-accent text-xs font-mono mb-1">
+                            <FileCheck size={12} /> {v.detailRequirements.toUpperCase()}
+                          </div>
+                          <p className="text-muted-foreground leading-relaxed">{type.req}</p>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3 pt-2 border-t border-border">
+                          <div>
+                            <div className="flex items-center gap-1.5 text-accent text-[10px] font-mono mb-1">
+                              <Calendar size={11} /> {v.detailDuration.toUpperCase()}
+                            </div>
+                            <p className="text-foreground text-xs">{type.duration}</p>
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-1.5 text-accent text-[10px] font-mono mb-1">
+                              <Clock size={11} /> {v.detailProcessing.toUpperCase()}
+                            </div>
+                            <p className="text-foreground text-xs">{type.processing}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="text-muted-foreground text-xs italic border-s-2 border-accent/30 ps-3 mt-5">
+                  {detail.note}
+                </p>
+              </div>
+            </motion.div>
+          )}
+          {!detail && (
+            <p className="text-center text-muted-foreground text-sm mt-6 italic">
+              {v.detailSelectPrompt}
+            </p>
+          )}
+        </AnimatePresence>
       </Section>
 
       <Section>
@@ -196,6 +285,19 @@ const VisaServices = () => {
           </div>
         </FadeIn>
       </Section>
+
+      {/* Floating VisaScore Pro CTA */}
+      <Link
+        to="/visa-score"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="visa-score-pill"
+        aria-label="VisaScore Pro"
+      >
+        <Sparkles size={16} className="text-background" />
+        <span>{v.visaScoreCTA}</span>
+        <ArrowRight size={14} className="text-background" />
+      </Link>
     </>
   );
 };
