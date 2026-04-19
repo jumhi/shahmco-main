@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { createContext, useState, ReactNode, useEffect } from "react";
 import { Language, TranslationKeys, isRTL } from "./types";
 import { en } from "./en";
 import { ar } from "./ar";
@@ -7,14 +7,14 @@ import { ru } from "./ru";
 
 const translations: Record<Language, TranslationKeys> = { en, ar, zh, ru };
 
-interface LanguageContextType {
+export interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: TranslationKeys;
   dir: "ltr" | "rtl";
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+export const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>(() => {
@@ -42,8 +42,5 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (!context) throw new Error("useLanguage must be used within LanguageProvider");
-  return context;
-};
+// Re-export hook from a separate module for Fast Refresh stability
+export { useLanguage } from "./useLanguage";
