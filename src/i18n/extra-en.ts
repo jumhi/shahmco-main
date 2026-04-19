@@ -7,7 +7,7 @@ export const pricingPageEN: TranslationKeys["pricingPage"] = {
   title1: "Shahmco",
   title2: "E-Invoicing Platform",
   subtitle:
-    "UAE FTA and ZATCA-compliant e-invoicing software for SMEs and enterprises across the GCC. Generate, send, and manage compliant invoices — in Arabic and English — from one platform.",
+    "UAE FTA and ZATCA-compliant e-invoicing software, plus website creation and digital storefront packages for SMEs and enterprises across the GCC. Generate, send, and manage compliant invoices — in Arabic and English — from one platform.",
   monthly: "Monthly",
   annual: "Annual",
   save: "SAVE 20%",

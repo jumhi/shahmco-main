@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { WAFloat } from "./WAFloat";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -18,6 +19,7 @@ const Layout = () => {
         <Outlet />
       </main>
       <Footer />
+      <WAFloat />
     </div>
   );
 };

@@ -11,7 +11,7 @@ export const ru: TranslationKeys = {
     clients: "Клиенты",
     contact: "Контакты",
     privacy: "Конфиденциальность",
-    pricing: "Цены",
+    pricing: "Продукты",
     downloads: "Загрузки",
     visa: "Визовые услуги",
   },

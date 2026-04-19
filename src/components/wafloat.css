@@ -3,7 +3,7 @@
   right: 16px;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 700;
+  z-index: 60;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,25 +11,25 @@
   width: 48px;
   padding: 16px 0;
   border-radius: 999px;
-  background: color-mix(in oklch, var(--bg-2) 60%, transparent);
+  background: hsl(var(--secondary) / 0.6);
   backdrop-filter: blur(18px) saturate(150%);
   -webkit-backdrop-filter: blur(18px) saturate(150%);
-  border: 1px solid color-mix(in oklch, var(--wa-green) 40%, transparent);
+  border: 1px solid hsl(142 70% 45% / 0.4);
   box-shadow:
-    0 10px 40px -12px oklch(8% 0.12 300 / 0.7),
-    0 0 24px color-mix(in oklch, var(--wa-green) 25%, transparent),
-    inset 0 1px 0 oklch(100% 0 0 / 0.08);
+    0 10px 40px -12px hsl(0 0% 0% / 0.7),
+    0 0 24px hsl(142 70% 45% / 0.25),
+    inset 0 1px 0 hsl(0 0% 100% / 0.08);
   text-decoration: none;
-  transition: width 220ms var(--ease-out), border-color 220ms, box-shadow 220ms, transform 220ms var(--ease-out);
+  transition: width 220ms ease-out, border-color 220ms, box-shadow 220ms, transform 220ms ease-out;
 }
 
 .wa-pill:hover {
   width: 56px;
-  border-color: var(--wa-green);
+  border-color: hsl(142 70% 45%);
   box-shadow:
-    0 12px 48px -10px oklch(8% 0.12 300 / 0.8),
-    0 0 38px color-mix(in oklch, var(--wa-green) 42%, transparent),
-    inset 0 1px 0 oklch(100% 0 0 / 0.12);
+    0 12px 48px -10px hsl(0 0% 0% / 0.8),
+    0 0 38px hsl(142 70% 45% / 0.42),
+    inset 0 1px 0 hsl(0 0% 100% / 0.12);
 }
 .wa-pill:hover .wa-pulse { animation-play-state: paused; opacity: 0; }
 
@@ -40,11 +40,11 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: linear-gradient(180deg, var(--wa-green), oklch(60% 0.16 148));
+  background: linear-gradient(180deg, hsl(142 70% 45%), hsl(148 60% 40%));
   color: white;
   box-shadow:
-    0 4px 14px oklch(60% 0.18 148 / 0.45),
-    inset 0 1px 0 oklch(100% 0 0 / 0.25);
+    0 4px 14px hsl(148 70% 45% / 0.45),
+    inset 0 1px 0 hsl(0 0% 100% / 0.25);
   position: relative;
   z-index: 2;
 }
@@ -52,11 +52,11 @@
 .wa-text {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  font-family: var(--font-body);
+  font-family: var(--font-body, inherit);
   font-size: 9.5px;
   font-weight: 600;
   letter-spacing: 0.22em;
-  color: var(--tx-2);
+  color: hsl(var(--muted-foreground));
   user-select: none;
 }
 
@@ -68,9 +68,9 @@
   height: 36px;
   margin-left: -18px;
   border-radius: 50%;
-  background: var(--wa-green);
+  background: hsl(142 70% 45%);
   opacity: 0;
-  animation: wa-pulse 2.4s var(--ease-out) infinite;
+  animation: wa-pulse 2.4s ease-out infinite;
   pointer-events: none;
 }
 
@@ -78,6 +78,11 @@
   0%   { transform: scale(1);   opacity: 0.55; }
   70%  { transform: scale(1.9); opacity: 0;   }
   100% { transform: scale(1.9); opacity: 0;   }
+}
+
+[dir="rtl"] .wa-pill {
+  right: auto;
+  left: 16px;
 }
 
 @media (max-width: 640px) {
