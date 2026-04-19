@@ -82,6 +82,20 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    position: relative;
+  }
+
+  /* Deep imperial purple radial ambient (no grid) */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse 70% 55% at 15% -5%, hsl(282 70% 28% / 0.55) 0%, transparent 55%),
+      radial-gradient(ellipse 55% 45% at 92% 100%, hsl(275 65% 24% / 0.45) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 35% at 55% 55%, hsl(295 55% 20% / 0.22) 0%, transparent 60%);
+    pointer-events: none;
   }
 
   h1, h2, h3, h4, h5, h6 {
