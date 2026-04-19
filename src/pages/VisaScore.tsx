@@ -6,6 +6,16 @@ import { ArrowRight, Check, AlertCircle, MessageCircle, Printer, RotateCcw } fro
 import { Section, FadeIn } from "@/components/SectionComponents";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { ShieldCheck, Lock, Mail } from "lucide-react";
+import afwaajLogo from "@/assets/partners/afwaaj.png";
+import sultanLogo from "@/assets/partners/sultan-global.jpeg";
+import hamumyLogo from "@/assets/partners/al-hamumy.jpeg";
+
+const PARTNERS = [
+  { name: "AFWAAJ", logo: afwaajLogo, tag: "Strategic Affiliate" },
+  { name: "Sultan Group Global", logo: sultanLogo, tag: "Corporate Partner" },
+  { name: "AL-HAMUMY LTD", logo: hamumyLogo, tag: "Travel & Visa Partner" },
+];
 
 // ═══════════════════════════════════════ DATA ═══════════════════════════════════════
 type Destination = {

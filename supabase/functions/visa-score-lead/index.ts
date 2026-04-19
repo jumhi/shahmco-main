@@ -69,7 +69,9 @@ Deno.serve(async (req) => {
     });
     if (dbErr) console.error("DB insert error:", dbErr);
 
-    // Email via Resend
+    let emailStatus: "sent" | "skipped" | "failed" = "skipped";
+    let emailError: string | null = null;
+
     if (resendKey) {
       const breakdownRows = d.breakdown.map((b) =>
         `<tr><td style="padding:6px 10px;border-bottom:1px solid #eee">${b.name}</td><td style="padding:6px 10px;border-bottom:1px solid #eee;color:#666">${b.section}</td><td style="padding:6px 10px;border-bottom:1px solid #eee;text-align:right">${b.levelLabel}</td><td style="padding:6px 10px;border-bottom:1px solid #eee;text-align:right;font-weight:600">${b.val}/${b.max}</td></tr>`
@@ -84,16 +86,18 @@ Deno.serve(async (req) => {
             <p style="margin:6px 0 0;color:#C9A227;font-size:13px">SHAHMCO Global · Corporate Advisory & Software Solutions</p>
           </div>
           <div style="padding:24px">
-            <div style="display:flex;gap:16px;background:#f9f7fc;border-radius:8px;padding:16px;margin-bottom:20px;border-left:4px solid ${statusColor}">
-              <div style="flex:1">
-                <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px">Score</div>
-                <div style="font-size:32px;font-weight:700;color:${statusColor}">${d.score}/100</div>
-                <div style="font-size:13px;color:#555">${d.verdict} · Threshold ${d.threshold}</div>
-              </div>
-              <div style="text-align:right">
-                <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px">Destination</div>
-                <div style="font-size:18px;font-weight:600">${d.destination}</div>
-                <div style="font-size:13px;color:#555">${d.category} · ${d.days} days</div>
+            <div style="background:#f9f7fc;border-radius:8px;padding:16px;margin-bottom:20px;border-left:4px solid ${statusColor}">
+              <div style="display:flex;justify-content:space-between;gap:16px">
+                <div>
+                  <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px">Score</div>
+                  <div style="font-size:32px;font-weight:700;color:${statusColor}">${d.score}/100</div>
+                  <div style="font-size:13px;color:#555">${d.verdict} · Threshold ${d.threshold}</div>
+                </div>
+                <div style="text-align:right">
+                  <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px">Destination</div>
+                  <div style="font-size:18px;font-weight:600">${d.destination}</div>
+                  <div style="font-size:13px;color:#555">${d.category} · ${d.days} days</div>
+                </div>
               </div>
             </div>
 
@@ -120,26 +124,51 @@ Deno.serve(async (req) => {
         </div>
       </body></html>`;
 
-      const emailRes = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${resendKey}` },
-        body: JSON.stringify({
-          from: "SHAHMCO VisaScore <onboarding@resend.dev>",
-          to: ["info@shahmco.com"],
-          reply_to: d.email,
-          subject: `[VisaScore ${d.score}/100] ${d.fullName} → ${d.destination} (${d.verdict})`,
-          html,
-        }),
-      });
+      // Primary recipient
+      const primary = "info@shahmco.com";
+
+      const sendEmail = async (to: string[], subject: string) => {
+        return await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${resendKey}` },
+          body: JSON.stringify({
+            from: "SHAHMCO VisaScore <onboarding@resend.dev>",
+            to,
+            reply_to: d.email,
+            subject,
+            html,
+          }),
+        });
+      };
+
+      const subject = `[VisaScore ${d.score}/100] ${d.fullName} → ${d.destination} (${d.verdict})`;
+      let emailRes = await sendEmail([primary], subject);
+
+      // If Resend rejects (e.g. test mode / unverified domain), retry sending to the applicant's
+      // own email so the team still has a record they can forward.
       if (!emailRes.ok) {
         const txt = await emailRes.text();
-        console.error("Resend error:", emailRes.status, txt);
+        console.error("Resend primary send failed:", emailRes.status, txt);
+        emailError = `${emailRes.status}: ${txt}`;
+
+        // Retry to applicant email as fallback so submission still goes through
+        const fallbackRes = await sendEmail([d.email], `[Copy] ${subject}`);
+        if (fallbackRes.ok) {
+          emailStatus = "sent";
+          console.log("Resend fallback sent to applicant:", d.email);
+        } else {
+          emailStatus = "failed";
+          const ftxt = await fallbackRes.text();
+          console.error("Resend fallback also failed:", fallbackRes.status, ftxt);
+        }
+      } else {
+        emailStatus = "sent";
       }
     } else {
       console.warn("RESEND_API_KEY not set — skipping email");
     }
 
-    return new Response(JSON.stringify({ ok: true }), {
+    return new Response(JSON.stringify({ ok: true, emailStatus, emailError }), {
       status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (e) {

@@ -57,6 +57,36 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Legal & Registry */}
+        <div className="mt-12 pt-8 border-t border-border">
+          <h4 className="text-accent font-heading text-sm font-semibold mb-4 tracking-wider text-center md:text-start">
+            Legal & Registry
+          </h4>
+          <div className="grid sm:grid-cols-3 gap-3 text-sm">
+            <Link
+              to="/compliance"
+              className="bg-card/40 border border-border hover:border-accent/40 rounded-lg px-4 py-3 text-muted-foreground hover:text-foreground transition-all"
+            >
+              <div className="text-accent text-[10px] uppercase tracking-widest mb-0.5">Framework</div>
+              Compliance
+            </Link>
+            <Link
+              to="/privacy"
+              className="bg-card/40 border border-border hover:border-accent/40 rounded-lg px-4 py-3 text-muted-foreground hover:text-foreground transition-all"
+            >
+              <div className="text-accent text-[10px] uppercase tracking-widest mb-0.5">Data</div>
+              Privacy Policy
+            </Link>
+            <Link
+              to="/terms"
+              className="bg-card/40 border border-border hover:border-accent/40 rounded-lg px-4 py-3 text-muted-foreground hover:text-foreground transition-all"
+            >
+              <div className="text-accent text-[10px] uppercase tracking-widest mb-0.5">Agreement</div>
+              Terms of Service
+            </Link>
+          </div>
+        </div>
+
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

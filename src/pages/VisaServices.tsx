@@ -288,12 +288,13 @@ const VisaServices = () => {
       {/* Floating Gold VisaScore Pill — same-tab navigation, only on this page */}
       <Link
         to="/visa-score"
-        className="visa-score-pill fixed bottom-6 left-1/2 -translate-x-1/2 z-40 inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-heading font-bold text-sm tracking-wide transition-transform"
+        style={{ bottom: "1.75rem", left: "50%" }}
+        className="visa-score-pill z-50 inline-flex items-center gap-2.5 px-7 py-4 rounded-full font-heading font-extrabold text-base tracking-wide"
         aria-label="Open VisaScore Pro assessment"
       >
-        <Award size={18} />
+        <Award size={20} strokeWidth={2.5} />
         Free VisaScore Pro™ Check
-        <ArrowRight size={16} />
+        <ArrowRight size={18} strokeWidth={2.5} />
       </Link>
     </>
   );

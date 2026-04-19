@@ -108,3 +108,70 @@
   }
 }
 
+/* ═══════════════════════ HYPER-GOLD VISASCORE PILL ═══════════════════════ */
+.visa-score-pill {
+  position: fixed;
+  background: linear-gradient(
+    110deg,
+    hsl(38 95% 48%) 0%,
+    hsl(45 100% 70%) 25%,
+    hsl(50 100% 88%) 45%,
+    hsl(45 100% 70%) 65%,
+    hsl(38 95% 48%) 100%
+  );
+  background-size: 250% 100%;
+  color: hsl(270 60% 12%);
+  border: 2px solid hsl(45 100% 75%);
+  box-shadow:
+    0 0 0 3px hsl(43 90% 55% / 0.18),
+    0 10px 30px -8px hsl(43 90% 55% / 0.7),
+    0 0 50px -8px hsl(45 100% 65% / 0.55),
+    inset 0 1px 0 hsl(0 0% 100% / 0.45),
+    inset 0 -2px 6px hsl(38 80% 35% / 0.35);
+  text-shadow: 0 1px 0 hsl(45 100% 88% / 0.6);
+  animation:
+    vs-shimmer 2.4s linear infinite,
+    vs-bob 3s ease-in-out infinite,
+    vs-glow-pulse 2s ease-in-out infinite;
+  will-change: transform, background-position, box-shadow;
+}
+.visa-score-pill::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  background: radial-gradient(closest-side, hsl(45 100% 65% / 0.55), transparent 70%);
+  filter: blur(14px);
+  z-index: -1;
+  animation: vs-halo 3s ease-in-out infinite;
+}
+.visa-score-pill:hover {
+  transform: translate(-50%, -4px) scale(1.04);
+  box-shadow:
+    0 0 0 4px hsl(43 90% 55% / 0.25),
+    0 18px 40px -8px hsl(43 90% 55% / 0.85),
+    0 0 70px -6px hsl(45 100% 70% / 0.75),
+    inset 0 1px 0 hsl(0 0% 100% / 0.55);
+}
+
+@keyframes vs-shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 250% 50%; }
+}
+@keyframes vs-bob {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, -6px); }
+}
+@keyframes vs-glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 8px hsl(45 100% 60% / 0.4)); }
+  50%      { filter: drop-shadow(0 0 22px hsl(45 100% 70% / 0.85)); }
+}
+@keyframes vs-halo {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 0.95; transform: scale(1.12); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .visa-score-pill,
+  .visa-score-pill::before { animation: none; }
+}
+
