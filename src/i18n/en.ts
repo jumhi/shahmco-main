@@ -21,9 +21,17 @@ export const en: TranslationKeys = {
     title2: "Digital Solutions",
     title3: "& Global Connections.",
     subtitle:
-      "Advisory, digital transformation, and ready-to-deploy software products — serving businesses and individuals across the GCC and international markets.",
-    cta: "Get in Touch",
+      "Advisory, digital transformation, and ready-to-purchase software products — serving businesses and individuals across the GCC and international markets.",
+    cta: "Browse Products",
     learnMore: "Our Services",
+    browseProducts: "Browse Products",
+    badges: [
+      "SPCFZ Licensed · No. 4423928",
+      "B2C & B2B Ready",
+      "AML / KYC Compliant",
+      "GCC & International Markets",
+      "Instant Digital Delivery",
+    ],
   },
   intro: {
     label: "WHO WE ARE",
@@ -69,6 +77,11 @@ export const en: TranslationKeys = {
     subtitle:
       "Share your requirements and we'll identify the best path forward — direct delivery or verified partner coordination.",
     button: "Contact Our Team",
+    foundationLabel: "Our Foundation",
+    foundationTitle: "We combine digital expertise, global networks, and strategic partnerships to",
+    foundationHighlight: "support businesses at every stage of growth.",
+    foundationBrowse: "Browse Products",
+    foundationView: "View All Services",
   },
   about: {
     label: "ABOUT US",
@@ -121,16 +134,33 @@ export const en: TranslationKeys = {
     ],
     coordNote:
       "Shahmco Global acts strictly as a coordination support provider. All commercial transactions are concluded directly between the contracting parties through regulated financial channels. We do not act as a financial intermediary or hold client funds.",
-    techTitle: "Digital Solutions & Software",
+    techTitle: "Digital Solutions & E-Commerce",
     techItems: [
       "Website design & development",
       "E-commerce store setup",
-      "CRM and workflow systems",
-      "Business email and infrastructure setup",
+      "Business systems: CRM, email, workflows",
       "Payment integration guidance",
     ],
     techNote:
       "Digital projects are delivered under fixed-scope agreements with clearly defined deliverables and timelines.",
+    commercialTitle: "Commercial Advisory & Documentation",
+    commercialItems: [
+      "Commercial agreement drafting support",
+      "NDA & inter-party contract preparation",
+      "Business partner profile review",
+      "Feasibility assessments & business advisory",
+    ],
+    commercialNote:
+      "All services are provided strictly on an advisory basis. We do not provide legal representation.",
+    travelTitle: "Travel & Lifestyle Services",
+    travelItems: [
+      "Travel planning and packages",
+      "Tourism support services",
+      "Partner-based booking assistance",
+      "Visa consultation & application guidance",
+    ],
+    travelNote:
+      "Travel and lifestyle services are coordinated through verified partner networks under transparent referral arrangements.",
   },
   howWeWorkPage: {
     label: "OUR PROCESS",
