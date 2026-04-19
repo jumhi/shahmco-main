@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Globe, CheckCircle2, ClipboardList, RefreshCw, Search, MessageSquare, Sparkles, Clock, Calendar, FileCheck, X } from "lucide-react";
+import { ArrowRight, Globe, CheckCircle2, ClipboardList, RefreshCw, Search, MessageSquare, Sparkles, Clock, Calendar, FileCheck, X, Award } from "lucide-react";
 import {
   Section,
   SectionTitle,
@@ -285,8 +285,18 @@ const VisaServices = () => {
           </div>
         </FadeIn>
       </Section>
+      {/* Floating Gold VisaScore Pill — same-tab navigation, only on this page */}
+      <Link
+        to="/visa-score"
+        className="visa-score-pill fixed bottom-6 left-1/2 -translate-x-1/2 z-40 inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-heading font-bold text-sm tracking-wide transition-transform"
+        aria-label="Open VisaScore Pro assessment"
+      >
+        <Award size={18} />
+        Free VisaScore Pro™ Check
+        <ArrowRight size={16} />
+      </Link>
     </>
   );
 };
 
-export default VisaServices;
+export default VisaScore;
