@@ -157,8 +157,8 @@ export const downloadsPageEN: TranslationKeys["downloadsPage"] = {
     },
     {
       tagLabel: "Consultation",
-      title: "Full Visa Advisory Session",
-      desc: "60-minute comprehensive session including document review, country-specific requirements, application strategy, and submission checklist.",
+      title: "Visa Consultation — Family",
+      desc: "30-minute family-focused advisory session covering joint visa applications, dependent documentation, and travel planning for family destinations.",
       price: "USD 50",
     },
   ],
