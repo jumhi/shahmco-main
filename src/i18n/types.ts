@@ -251,6 +251,13 @@ export type TranslationKeys = {
     destTitle2: string;
     destSubtitle: string;
     destinations: { code: string; name: string; tag: string }[];
+    countryDetails: { code: string; name: string; types: { cat: string; req: string; duration: string; processing: string }[]; note: string }[];
+    detailLabel: string;
+    detailDuration: string;
+    detailProcessing: string;
+    detailRequirements: string;
+    detailSelectPrompt: string;
+    visaScoreCTA: string;
     regionsTitle1: string;
     regionsTitle2: string;
     regions: { title: string; countries: string }[];
