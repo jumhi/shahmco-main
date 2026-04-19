@@ -54,6 +54,7 @@ export default {
         gold: {
           DEFAULT: "hsl(var(--gold))",
           light: "hsl(var(--gold-light))",
+          bright: "hsl(var(--gold-bright))",
           dark: "hsl(var(--gold-dark))",
         },
         purple: {
@@ -61,6 +62,9 @@ export default {
           medium: "hsl(var(--purple-medium))",
           light: "hsl(var(--purple-light))",
           glow: "hsl(var(--purple-glow))",
+        },
+        violet: {
+          neon: "hsl(var(--violet-neon))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
