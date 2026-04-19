@@ -299,4 +299,4 @@ const VisaServices = () => {
   );
 };
 
-export default VisaScore;
+export default VisaServices;
