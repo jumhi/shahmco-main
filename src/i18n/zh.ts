@@ -9,6 +9,7 @@ export const zh: TranslationKeys = {
     compliance: "合规",
     clients: "客户",
     contact: "联系我们",
+    privacy: "隐私",
   },
   hero: {
     badge: "立足阿联酋 · 放眼全球",
@@ -158,6 +159,9 @@ export const zh: TranslationKeys = {
     advisoryLink: "企业咨询",
     coordinationLink: "运营协调",
     softwareLink: "软件解决方案",
+    privacy: "隐私政策",
+    legal: "法律",
+    licenseLine: "许可证号 4423928.01 · TRN: 105208778800001",
   },
   termsPage: {
     label: "法律",

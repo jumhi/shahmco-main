@@ -9,6 +9,7 @@ export const ru: TranslationKeys = {
     compliance: "Комплаенс",
     clients: "Клиенты",
     contact: "Контакты",
+    privacy: "Конфиденциальность",
   },
   hero: {
     badge: "ГЛОБАЛЬНОЕ ПРЕВОСХОДСТВО ИЗ ОАЭ",
@@ -158,6 +159,9 @@ export const ru: TranslationKeys = {
     advisoryLink: "Корпоративный консалтинг",
     coordinationLink: "Операционная координация",
     softwareLink: "Программные решения",
+    privacy: "Политика конфиденциальности",
+    legal: "ЮРИДИЧЕСКОЕ",
+    licenseLine: "Лицензия № 4423928.01 · TRN: 105208778800001",
   },
   termsPage: {
     label: "ЮРИДИЧЕСКОЕ",
