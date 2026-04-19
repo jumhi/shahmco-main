@@ -17,7 +17,6 @@ const Navbar = () => {
     { label: t.nav.services, path: "/services" },
     { label: t.nav.downloads, path: "/b2c" },
     { label: t.nav.visa, path: "/visa" },
-    { label: "VisaScore", path: "/visascore.html", external: true },
     { label: t.nav.howWeWork, path: "/how-we-work" },
     { label: t.nav.compliance, path: "/compliance" },
     { label: t.nav.contact, path: "/contact" },

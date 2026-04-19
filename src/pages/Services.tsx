@@ -107,14 +107,12 @@ const Services = () => {
             >
               Explore Visa Services <ArrowRight size={14} />
             </Link>
-            <a
-              href="/visascore.html"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/visa"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-accent/30 text-accent hover:bg-accent/10 transition-all text-sm font-medium"
             >
               Free VisaScore Pro™ Check
-            </a>
+            </Link>
           </div>
         </FadeIn>
       </Section>
