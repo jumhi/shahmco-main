@@ -1,5 +1,5 @@
 import { Section, SectionTitle, SectionSubtitle, FadeIn, StaggerContainer, StaggerItem } from "@/components/SectionComponents";
-import { Briefcase, Globe, Code } from "lucide-react";
+import { Code, Briefcase, FileText, Plane, Globe } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { LucideIcon } from "lucide-react";
@@ -7,10 +7,12 @@ import { LucideIcon } from "lucide-react";
 const Services = () => {
   const { t } = useLanguage();
 
-  const serviceBlocks: { icon: LucideIcon; title: string; items: string[]; note: string }[] = [
-    { icon: Briefcase, title: t.servicesPage.advisoryTitle, items: t.servicesPage.advisoryItems, note: t.servicesPage.advisoryNote },
-    { icon: Globe, title: t.servicesPage.coordTitle, items: t.servicesPage.coordItems, note: t.servicesPage.coordNote },
-    { icon: Code, title: t.servicesPage.techTitle, items: t.servicesPage.techItems, note: t.servicesPage.techNote },
+  const serviceBlocks: { num: string; icon: LucideIcon; title: string; items: string[]; note: string }[] = [
+    { num: "01", icon: Code, title: t.servicesPage.techTitle, items: t.servicesPage.techItems, note: t.servicesPage.techNote },
+    { num: "02", icon: Briefcase, title: t.servicesPage.advisoryTitle, items: t.servicesPage.advisoryItems, note: t.servicesPage.advisoryNote },
+    { num: "03", icon: FileText, title: t.servicesPage.commercialTitle, items: t.servicesPage.commercialItems, note: t.servicesPage.commercialNote },
+    { num: "04", icon: Plane, title: t.servicesPage.travelTitle, items: t.servicesPage.travelItems, note: t.servicesPage.travelNote },
+    { num: "05", icon: Globe, title: t.servicesPage.coordTitle, items: t.servicesPage.coordItems, note: t.servicesPage.coordNote },
   ];
 
   return (
@@ -28,9 +30,12 @@ const Services = () => {
           <StaggerItem key={block.title}>
             <motion.div
               whileHover={{ borderColor: "hsl(43 85% 55% / 0.25)" }}
-              className="bg-card border border-border rounded-xl p-8 md:p-10 transition-all duration-500 shadow-card"
+              className="bg-card border border-border rounded-xl p-8 md:p-10 transition-all duration-500 shadow-card relative overflow-hidden"
             >
-              <div className="flex flex-col md:flex-row items-start gap-6">
+              <span className="absolute top-6 end-8 font-heading text-6xl md:text-7xl font-bold text-accent/10 select-none">
+                {block.num}
+              </span>
+              <div className="flex flex-col md:flex-row items-start gap-6 relative z-10">
                 <motion.div
                   whileHover={{ rotate: 5, scale: 1.05 }}
                   className="w-14 h-14 rounded-xl bg-gradient-gold flex items-center justify-center flex-shrink-0"

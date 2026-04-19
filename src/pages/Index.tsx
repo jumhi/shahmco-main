@@ -99,18 +99,31 @@ const Index = () => {
               className="flex flex-wrap gap-4"
             >
               <Link
-                to="/contact"
+                to="/pricing"
                 className="inline-flex items-center gap-2 bg-gradient-gold text-accent-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:shadow-gold hover:scale-105 hover:-translate-y-0.5"
               >
-                {t.hero.cta}
+                {t.hero.browseProducts}
                 <ChevronRight size={18} />
               </Link>
               <Link
-                to="/about"
+                to="/services"
                 className="inline-flex items-center gap-2 border border-border/60 text-foreground px-8 py-4 rounded-lg font-semibold hover:bg-secondary/40 hover:border-accent/30 transition-all duration-300"
               >
                 {t.hero.learnMore}
               </Link>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.3, duration: 0.6 }}
+              className="mt-10 flex flex-wrap gap-x-6 gap-y-3"
+            >
+              {t.hero.badges.map((b) => (
+                <span key={b} className="inline-flex items-center gap-2 text-xs md:text-sm text-muted-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  {b}
+                </span>
+              ))}
             </motion.div>
           </motion.div>
         </div>
@@ -250,6 +263,38 @@ const Index = () => {
             {t.clientsPage.note}
           </p>
         </FadeIn>
+      </Section>
+
+      {/* Foundation strip */}
+      <Section>
+        <div className="max-w-4xl mx-auto text-center">
+          <FadeIn>
+            <p className="text-accent font-heading text-sm tracking-widest mb-4">{t.cta.foundationLabel}</p>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+              {t.cta.foundationTitle}{" "}
+              <span className="text-gradient-gold italic">{t.cta.foundationHighlight}</span>
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <div className="mt-10 flex flex-wrap gap-4 justify-center">
+              <Link
+                to="/pricing"
+                className="inline-flex items-center gap-2 bg-gradient-gold text-accent-foreground px-8 py-4 rounded-lg font-semibold hover:shadow-gold hover:scale-105 hover:-translate-y-0.5 transition-all duration-300"
+              >
+                {t.cta.foundationBrowse}
+                <ChevronRight size={18} />
+              </Link>
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-2 border border-border/60 text-foreground px-8 py-4 rounded-lg font-semibold hover:bg-secondary/40 hover:border-accent/30 transition-all duration-300"
+              >
+                {t.cta.foundationView}
+              </Link>
+            </div>
+          </FadeIn>
+        </div>
       </Section>
 
       {/* CTA */}

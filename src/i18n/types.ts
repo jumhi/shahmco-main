@@ -31,6 +31,8 @@ export type TranslationKeys = {
     subtitle: string;
     cta: string;
     learnMore: string;
+    browseProducts: string;
+    badges: string[];
   };
   intro: {
     label: string;
@@ -67,6 +69,11 @@ export type TranslationKeys = {
     title: string;
     subtitle: string;
     button: string;
+    foundationLabel: string;
+    foundationTitle: string;
+    foundationHighlight: string;
+    foundationBrowse: string;
+    foundationView: string;
   };
   about: {
     label: string;
@@ -98,6 +105,12 @@ export type TranslationKeys = {
     techTitle: string;
     techItems: string[];
     techNote: string;
+    commercialTitle: string;
+    commercialItems: string[];
+    commercialNote: string;
+    travelTitle: string;
+    travelItems: string[];
+    travelNote: string;
   };
   howWeWorkPage: {
     label: string;
