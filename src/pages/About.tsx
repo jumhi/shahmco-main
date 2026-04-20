@@ -169,6 +169,35 @@ const About = () => {
             </ul>
           </motion.div>
         </FadeIn>
+
+        <FadeIn delay={0.1}>
+          <motion.div
+            whileHover={{ borderColor: "hsl(43 85% 55% / 0.3)" }}
+            className="bg-card border border-border rounded-xl p-8 max-w-3xl shadow-card mt-8"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-lg bg-gradient-gold flex items-center justify-center">
+                <ShieldCheck size={20} className="text-accent-foreground" />
+              </div>
+              <h3 className="font-heading text-xl font-semibold">{t.compliancePage.paymentsTitle}</h3>
+            </div>
+            <div className="space-y-5">
+              <div>
+                <p className="text-accent font-heading text-xs tracking-widest uppercase mb-2">
+                  {t.compliancePage.paymentsB2BHeading}
+                </p>
+                <p className="text-muted-foreground leading-relaxed">{t.compliancePage.paymentsB2B}</p>
+              </div>
+              <div className="h-px bg-border" />
+              <div>
+                <p className="text-accent font-heading text-xs tracking-widest uppercase mb-2">
+                  {t.compliancePage.paymentsB2CHeading}
+                </p>
+                <p className="text-muted-foreground leading-relaxed">{t.compliancePage.paymentsB2C}</p>
+              </div>
+            </div>
+          </motion.div>
+        </FadeIn>
       </Section>
 
       {/* Geography */}

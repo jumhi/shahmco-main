@@ -226,8 +226,15 @@ export const en: TranslationKeys = {
       "Escrow or fund-holding activities",
       "Legal representation or regulated legal advice",
       "Acting as a regulated financial broker or intermediary",
-      "Consumer payment processing or remittance",
+      "Acting as a payment intermediary or processing payments on behalf of third parties",
     ],
+    paymentsTitle: "Payment & Fund Handling",
+    paymentsB2BHeading: "For third-party brokerage and coordination services",
+    paymentsB2B:
+      "Shahmco Global FZC LLC does not hold, transfer, or process client funds on behalf of other parties. All commercial transactions in these services are concluded directly between contracting parties through regulated financial institutions.",
+    paymentsB2CHeading: "For direct retail sales of digital products and services",
+    paymentsB2C:
+      "Shahmco Global FZC LLC operates as a direct seller. Online payments for products and subscriptions are processed through a CBUAE-licensed payment gateway. The company receives settlement directly into its registered UAE business bank account and does not intermediate, pool, or hold consumer funds on behalf of any third party.",
   },
   clientsPage: {
     label: "OUR CLIENTS",
@@ -273,6 +280,8 @@ export const en: TranslationKeys = {
   footer: {
     description:
       "Sharjah Publishing City Free Zone licensed firm providing commercial advisory, digital solutions, and international business coordination.",
+    paymentsNote:
+      "Shahmco Global FZC LLC is a commercial brokerage, advisory, and digital services firm. Certain B2B services are facilitated through licensed third-party providers. For direct retail transactions, the company acts as seller and receives payment for its own products through a CBUAE-licensed payment gateway.",
     services: "SERVICES",
     company: "COMPANY",
     contactTitle: "CONTACT",
@@ -301,6 +310,14 @@ export const en: TranslationKeys = {
       "Governing law: United Arab Emirates",
       "Effective Date: 03 September 2025",
     ],
+    paymentTermsTitle: "4. Payment Terms",
+    paymentTermsIntro: "Shahmco Global FZC LLC operates two distinct payment models:",
+    paymentTermsB2B:
+      "(a) B2B Services — Advisory, coordination, and documentation support fees are invoiced directly to clients and settled by bank transfer or through approved payment gateways, as agreed in writing. The company does not hold or intermediate funds on behalf of any party in these engagements.",
+    paymentTermsB2C:
+      "(b) B2C Retail Sales — Digital products, subscriptions, and consultation sessions are sold directly by Shahmco Global FZC LLC to end consumers. Payment is processed through a CBUAE-licensed payment gateway. The company receives net settlement into its registered UAE bank account. All fees are inclusive of any applicable taxes and are quoted before purchase.",
+    paymentTermsClosing:
+      "The company does not act as a payment intermediary, escrow agent, or processor of funds on behalf of third parties in any transaction.",
   },
   privacyPage: {
     label: "LEGAL",

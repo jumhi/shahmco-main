@@ -133,6 +133,11 @@ export type TranslationKeys = {
     amlItems: string[];
     noEngageTitle: string;
     noEngageItems: string[];
+    paymentsTitle: string;
+    paymentsB2BHeading: string;
+    paymentsB2B: string;
+    paymentsB2CHeading: string;
+    paymentsB2C: string;
   };
   clientsPage: {
     label: string;
@@ -167,6 +172,7 @@ export type TranslationKeys = {
   };
   footer: {
     description: string;
+    paymentsNote: string;
     services: string;
     company: string;
     contactTitle: string;
@@ -187,6 +193,11 @@ export type TranslationKeys = {
     title1: string;
     title2: string;
     items: string[];
+    paymentTermsTitle: string;
+    paymentTermsIntro: string;
+    paymentTermsB2B: string;
+    paymentTermsB2C: string;
+    paymentTermsClosing: string;
   };
   privacyPage: {
     label: string;

@@ -26,6 +26,25 @@ const Terms = () => {
           </StaggerItem>
         ))}
       </StaggerContainer>
+
+      <div className="max-w-3xl mt-12">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-card border border-border rounded-xl p-8 shadow-card"
+        >
+          <h3 className="font-heading text-xl font-semibold mb-4">{t.termsPage.paymentTermsTitle}</h3>
+          <p className="text-muted-foreground leading-relaxed mb-5">{t.termsPage.paymentTermsIntro}</p>
+          <div className="space-y-5">
+            <p className="text-muted-foreground leading-relaxed">{t.termsPage.paymentTermsB2B}</p>
+            <div className="h-px bg-border" />
+            <p className="text-muted-foreground leading-relaxed">{t.termsPage.paymentTermsB2C}</p>
+            <div className="h-px bg-border" />
+            <p className="text-foreground leading-relaxed font-medium">{t.termsPage.paymentTermsClosing}</p>
+          </div>
+        </motion.div>
+      </div>
     </Section>
   );
 };
