@@ -280,6 +280,8 @@ export const en: TranslationKeys = {
   footer: {
     description:
       "Sharjah Publishing City Free Zone licensed firm providing commercial advisory, digital solutions, and international business coordination.",
+    paymentsNote:
+      "Shahmco Global FZC LLC is a commercial brokerage, advisory, and digital services firm. Certain B2B services are facilitated through licensed third-party providers. For direct retail transactions, the company acts as seller and receives payment for its own products through a CBUAE-licensed payment gateway.",
     services: "SERVICES",
     company: "COMPANY",
     contactTitle: "CONTACT",

@@ -136,7 +136,12 @@ export const zh: TranslationKeys = {
     amlTitle: "反洗钱与风险控制",
     amlItems: ["企业身份验证", "制裁名单筛查", "结构化文档归档", "合同框架下的交易监控"],
     noEngageTitle: "本公司不从事",
-    noEngageItems: ["消费者支付处理", "汇款服务", "托管或资金持有活动", "第三方过桥支付结构"],
+    noEngageItems: ["为第三方交易持有或转移客户资金", "托管或资金持有活动", "法律代理或受监管的法律意见", "作为受监管金融经纪或中介", "代表第三方作为支付中介或处理付款"],
+    paymentsTitle: "付款与资金处理",
+    paymentsB2BHeading: "关于第三方经纪与协调服务",
+    paymentsB2B: "Shahmco Global FZC LLC 不代表任何其他方持有、转移或处理客户资金。此类服务的所有商业交易均由签约方通过受监管的金融机构直接完成。",
+    paymentsB2CHeading: "关于数字产品与服务的直接零售销售",
+    paymentsB2C: "Shahmco Global FZC LLC 作为直接销售方运营。产品及订阅的在线付款通过 CBUAE 持牌支付网关处理，款项直接结算至公司在阿联酋注册的对公银行账户。公司不代表任何第三方中介、汇集或持有消费者资金。",
   },
   clientsPage: {
     label: "我们的客户",
@@ -171,6 +176,7 @@ export const zh: TranslationKeys = {
   },
   footer: {
     description: "总部位于阿联酋的企业咨询和技术服务公司。",
+    paymentsNote: "Shahmco Global FZC LLC 是一家商业经纪、咨询及数字服务公司。部分 B2B 服务通过持牌第三方供应商提供。对于直接零售交易，公司作为销售方，并通过 CBUAE 持牌支付网关收取自有产品的付款。",
     services: "服务",
     company: "公司",
     contactTitle: "联系方式",
@@ -191,6 +197,11 @@ export const zh: TranslationKeys = {
     title1: "服务",
     title2: "条款",
     items: ["服务基于专业咨询和协调提供", "不提供法律代理或受监管的金融经纪服务", "不持有客户资金或第三方交易托管", "所有费用在合作前书面约定", "根据阿联酋法律的责任限制", "适用法律：阿联酋", "生效日期：2025年9月3日"],
+    paymentTermsTitle: "4. 付款条款",
+    paymentTermsIntro: "Shahmco Global FZC LLC 采用两种不同的付款模式：",
+    paymentTermsB2B: "（a）B2B 服务 — 咨询、协调和文件支持费用直接向客户开具发票，按书面约定通过银行转账或经批准的支付网关结算。在此类业务中，公司不代表任何一方持有或中介资金。",
+    paymentTermsB2C: "（b）B2C 零售 — 数字产品、订阅和咨询会话由 Shahmco Global FZC LLC 直接销售给最终消费者。付款通过 CBUAE 持牌支付网关处理，公司将净结算款项收到其在阿联酋注册的银行账户。所有费用均含适用税费，并在购买前明示。",
+    paymentTermsClosing: "公司不在任何交易中担任代表第三方的支付中介、托管代理或资金处理方。",
   },
   privacyPage: {
     label: "法律",
