@@ -161,6 +161,16 @@ export const en: TranslationKeys = {
     ],
     travelNote:
       "Travel and lifestyle services are coordinated through verified partner networks under transparent referral arrangements.",
+    visaTitle: "Visa Consultation & Application Support",
+    visaCategories: [
+      { title: "Tourist Visa", desc: "Short-stay leisure travel — 30 to 90 days for most destinations." },
+      { title: "Business Visa", desc: "Meetings, conferences, and commercial visits with invitation letters." },
+      { title: "Student Visa", desc: "Study permits with admission letters and financial documentation support." },
+      { title: "Investment / Residency", desc: "Golden visa, residency-by-investment, and citizenship pathways." },
+    ],
+    visaNote: "Structured consultation across four primary visa categories — covering documentation guidance, eligibility assessment, and application support.",
+    visaCTA1: "Explore Visa Services",
+    visaCTA2: "Free VisaScore Pro\u2122 Check",
   },
   howWeWorkPage: {
     label: "OUR PROCESS",

@@ -111,6 +111,11 @@ export type TranslationKeys = {
     travelTitle: string;
     travelItems: string[];
     travelNote: string;
+    visaTitle: string;
+    visaCategories: { title: string; desc: string }[];
+    visaNote: string;
+    visaCTA1: string;
+    visaCTA2: string;
   };
   howWeWorkPage: {
     label: string;
