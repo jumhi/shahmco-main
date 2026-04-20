@@ -8,12 +8,12 @@ import { LucideIcon } from "lucide-react";
 const Services = () => {
   const { t } = useLanguage();
 
-  const visaCategories = [
-    { icon: Camera, title: "Tourist Visa", desc: "Short-stay leisure travel — 30 to 90 days for most destinations." },
-    { icon: Building2, title: "Business Visa", desc: "Meetings, conferences, and commercial visits with invitation letters." },
-    { icon: GraduationCap, title: "Student Visa", desc: "Study permits with admission letters and financial documentation support." },
-    { icon: TrendingUp, title: "Investment / Residency", desc: "Golden visa, residency-by-investment, and citizenship pathways." },
-  ];
+  // Icons for visa categories (mapped separately since icons aren't serializable in translations)
+  const visaCategoryIcons = [Camera, Building2, GraduationCap, TrendingUp];
+  const visaCategories = t.servicesPage.visaCategories.map((c, i) => ({
+    ...c,
+    icon: visaCategoryIcons[i],
+  }));
 
   type ServiceBlock = {
     num: string;
@@ -32,9 +32,9 @@ const Services = () => {
     {
       num: "05",
       icon: FileText,
-      title: "Visa Consultation & Application Support",
+      title: t.servicesPage.visaTitle,
       items: visaCategories.map((c) => `${c.title} — ${c.desc}`),
-      note: "Structured consultation across four primary visa categories — covering documentation guidance, eligibility assessment, and application support.",
+      note: t.servicesPage.visaNote,
       isVisa: true,
     },
     { num: "06", icon: Globe, title: t.servicesPage.coordTitle, items: t.servicesPage.coordItems, note: t.servicesPage.coordNote },
@@ -103,13 +103,13 @@ const Services = () => {
                           to="/visa"
                           className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-accent text-accent-foreground hover:opacity-90 transition-all text-sm font-medium"
                         >
-                          Explore Visa Services <ArrowRight size={14} />
+                          {t.servicesPage.visaCTA1} <ArrowRight size={14} />
                         </Link>
                         <Link
                           to="/visa"
                           className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-accent/30 text-accent hover:bg-accent/10 transition-all text-sm font-medium"
                         >
-                          Free VisaScore Pro™ Check
+                          {t.servicesPage.visaCTA2}
                         </Link>
                       </div>
                     )}

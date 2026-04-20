@@ -109,6 +109,16 @@ export const zh: TranslationKeys = {
     travelTitle: "旅行与生活方式服务",
     travelItems: ["旅行计划与套餐", "旅游支持服务", "基于合作伙伴的预订协助", "签证咨询与申请指导"],
     travelNote: "旅行与生活方式服务通过经核实的合作伙伴网络在透明的转介安排下协调。",
+    visaTitle: "签证咨询与申请支持",
+    visaCategories: [
+      { title: "旅游签证", desc: "短期休闲旅游 — 大多数目的地为30至90天。" },
+      { title: "商务签证", desc: "会议、研讨会和带有邀请函的商业访问。" },
+      { title: "学生签证", desc: "带有录取通知书和财务文件支持的学习许可。" },
+      { title: "投资/居留", desc: "黄金签证、投资移民和公民身份途径。" },
+    ],
+    visaNote: "针对四大主要签证类别的结构化咨询 — 涵盖文件指导、资格评估和申请支持。",
+    visaCTA1: "探索签证服务",
+    visaCTA2: "免费 VisaScore Pro\u2122 检测",
   },
   howWeWorkPage: {
     label: "流程",
