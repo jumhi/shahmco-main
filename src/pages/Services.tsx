@@ -8,7 +8,12 @@ import { LucideIcon } from "lucide-react";
 const Services = () => {
   const { t } = useLanguage();
 
-  const visaCategories = t.servicesPage.visaCategories;
+  // Icons for visa categories (mapped separately since icons aren't serializable in translations)
+  const visaCategoryIcons = [Camera, Building2, GraduationCap, TrendingUp];
+  const visaCategories = t.servicesPage.visaCategories.map((c, i) => ({
+    ...c,
+    icon: visaCategoryIcons[i],
+  }));
 
   type ServiceBlock = {
     num: string;
@@ -98,13 +103,13 @@ const Services = () => {
                           to="/visa"
                           className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-accent text-accent-foreground hover:opacity-90 transition-all text-sm font-medium"
                         >
-                          Explore Visa Services <ArrowRight size={14} />
+                          {t.servicesPage.visaCTA1} <ArrowRight size={14} />
                         </Link>
                         <Link
                           to="/visa"
                           className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-accent/30 text-accent hover:bg-accent/10 transition-all text-sm font-medium"
                         >
-                          Free VisaScore Pro™ Check
+                          {t.servicesPage.visaCTA2}
                         </Link>
                       </div>
                     )}
