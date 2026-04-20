@@ -302,6 +302,19 @@ const Pricing = () => {
             </Link>
           </div>
         </FadeIn>
+
+        <FadeIn delay={0.4}>
+          <div className="mt-12 bg-card/40 border border-border rounded-xl p-6 max-w-3xl">
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              All online payments are processed through a CBUAE-licensed payment gateway. Shahmco Global FZC LLC is the
+              direct seller of these products and services. The company does not hold, pool, or transfer funds on
+              behalf of any third party.
+            </p>
+            <p className="text-[11px] text-muted-foreground/70 font-mono mt-3">
+              Corporate Tax TRN: 105208778800001 · SPCFZ License No. 4423928.01
+            </p>
+          </div>
+        </FadeIn>
       </Section>
     </>
   );

@@ -21,6 +21,9 @@ const Footer = () => {
             <p className="text-muted-foreground text-sm leading-relaxed">
               {t.footer.description}
             </p>
+            <p className="text-muted-foreground/80 text-xs leading-relaxed mt-3">
+              {t.footer.paymentsNote}
+            </p>
             <p className="text-[10px] text-muted-foreground/70 font-mono mt-3">
               Shahmco Global FZC LLC · License No. 4423928.01 · SPCFZ, Sharjah, UAE
             </p>
