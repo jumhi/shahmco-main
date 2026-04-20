@@ -8,12 +8,7 @@ import { LucideIcon } from "lucide-react";
 const Services = () => {
   const { t } = useLanguage();
 
-  const visaCategories = [
-    { icon: Camera, title: "Tourist Visa", desc: "Short-stay leisure travel — 30 to 90 days for most destinations." },
-    { icon: Building2, title: "Business Visa", desc: "Meetings, conferences, and commercial visits with invitation letters." },
-    { icon: GraduationCap, title: "Student Visa", desc: "Study permits with admission letters and financial documentation support." },
-    { icon: TrendingUp, title: "Investment / Residency", desc: "Golden visa, residency-by-investment, and citizenship pathways." },
-  ];
+  const visaCategories = t.servicesPage.visaCategories;
 
   type ServiceBlock = {
     num: string;
@@ -32,9 +27,9 @@ const Services = () => {
     {
       num: "05",
       icon: FileText,
-      title: "Visa Consultation & Application Support",
+      title: t.servicesPage.visaTitle,
       items: visaCategories.map((c) => `${c.title} — ${c.desc}`),
-      note: "Structured consultation across four primary visa categories — covering documentation guidance, eligibility assessment, and application support.",
+      note: t.servicesPage.visaNote,
       isVisa: true,
     },
     { num: "06", icon: Globe, title: t.servicesPage.coordTitle, items: t.servicesPage.coordItems, note: t.servicesPage.coordNote },
