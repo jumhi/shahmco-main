@@ -8,20 +8,38 @@ import { LucideIcon } from "lucide-react";
 const Services = () => {
   const { t } = useLanguage();
 
-  const serviceBlocks: { num: string; icon: LucideIcon; title: string; items: string[]; note: string }[] = [
-    { num: "01", icon: Code, title: t.servicesPage.techTitle, items: t.servicesPage.techItems, note: t.servicesPage.techNote },
-    { num: "02", icon: Briefcase, title: t.servicesPage.advisoryTitle, items: t.servicesPage.advisoryItems, note: t.servicesPage.advisoryNote },
-    { num: "03", icon: FileText, title: t.servicesPage.commercialTitle, items: t.servicesPage.commercialItems, note: t.servicesPage.commercialNote },
-    { num: "04", icon: Plane, title: t.servicesPage.travelTitle, items: t.servicesPage.travelItems, note: t.servicesPage.travelNote },
-    { num: "05", icon: Globe, title: t.servicesPage.coordTitle, items: t.servicesPage.coordItems, note: t.servicesPage.coordNote },
-  ];
-
   const visaCategories = [
     { icon: Camera, title: "Tourist Visa", desc: "Short-stay leisure travel — 30 to 90 days for most destinations." },
     { icon: Building2, title: "Business Visa", desc: "Meetings, conferences, and commercial visits with invitation letters." },
     { icon: GraduationCap, title: "Student Visa", desc: "Study permits with admission letters and financial documentation support." },
     { icon: TrendingUp, title: "Investment / Residency", desc: "Golden visa, residency-by-investment, and citizenship pathways." },
   ];
+
+  type ServiceBlock = {
+    num: string;
+    icon: LucideIcon;
+    title: string;
+    items: string[];
+    note: string;
+    isVisa?: boolean;
+  };
+
+  const serviceBlocks: ServiceBlock[] = [
+    { num: "01", icon: Code, title: t.servicesPage.techTitle, items: t.servicesPage.techItems, note: t.servicesPage.techNote },
+    { num: "02", icon: Briefcase, title: t.servicesPage.advisoryTitle, items: t.servicesPage.advisoryItems, note: t.servicesPage.advisoryNote },
+    { num: "03", icon: FileText, title: t.servicesPage.commercialTitle, items: t.servicesPage.commercialItems, note: t.servicesPage.commercialNote },
+    { num: "04", icon: Plane, title: t.servicesPage.travelTitle, items: t.servicesPage.travelItems, note: t.servicesPage.travelNote },
+    {
+      num: "05",
+      icon: FileText,
+      title: "Visa Consultation & Application Support",
+      items: visaCategories.map((c) => `${c.title} — ${c.desc}`),
+      note: "Structured consultation across four primary visa categories — covering documentation guidance, eligibility assessment, and application support.",
+      isVisa: true,
+    },
+    { num: "06", icon: Globe, title: t.servicesPage.coordTitle, items: t.servicesPage.coordItems, note: t.servicesPage.coordNote },
+  ];
+
 
   return (
     <>
