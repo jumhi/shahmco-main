@@ -71,68 +71,54 @@ const Services = () => {
                   </motion.div>
                   <div className="flex-1">
                     <h3 className="font-heading text-2xl font-semibold mb-6">{block.title}</h3>
-                    <ul className="grid sm:grid-cols-2 gap-3 mb-6">
-                      {block.items.map((item) => (
-                        <li key={item} className="flex items-center gap-3 text-muted-foreground">
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                    {block.isVisa ? (
+                      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                        {visaCategories.map((c) => (
+                          <div
+                            key={c.title}
+                            className="bg-secondary/40 border border-border rounded-lg p-4"
+                          >
+                            <div className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center mb-3">
+                              <c.icon size={16} className="text-accent" />
+                            </div>
+                            <h4 className="font-heading font-semibold text-foreground text-sm mb-1.5">{c.title}</h4>
+                            <p className="text-muted-foreground text-xs leading-relaxed">{c.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <ul className="grid sm:grid-cols-2 gap-3 mb-6">
+                        {block.items.map((item) => (
+                          <li key={item} className="flex items-center gap-3 text-muted-foreground">
+                            <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                     <p className="text-muted-foreground text-sm italic border-t border-border pt-4">{block.note}</p>
+                    {block.isVisa && (
+                      <div className="flex flex-wrap gap-3 mt-5">
+                        <Link
+                          to="/visa"
+                          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-accent text-accent-foreground hover:opacity-90 transition-all text-sm font-medium"
+                        >
+                          Explore Visa Services <ArrowRight size={14} />
+                        </Link>
+                        <Link
+                          to="/visa"
+                          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-accent/30 text-accent hover:bg-accent/10 transition-all text-sm font-medium"
+                        >
+                          Free VisaScore Pro™ Check
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
             </StaggerItem>
           ))}
         </StaggerContainer>
-      </Section>
-
-      {/* Visa Consultation Categories */}
-      <Section className="pt-0">
-        <FadeIn>
-          <p className="text-accent font-heading text-sm tracking-widest mb-4">VISA CONSULTATION & APPLICATION SUPPORT</p>
-        </FadeIn>
-        <SectionTitle>
-          Visa <span className="text-gradient-gold">Categories</span>
-        </SectionTitle>
-        <SectionSubtitle>
-          We provide structured consultation across four primary visa categories — covering documentation guidance, eligibility assessment, and application support.
-        </SectionSubtitle>
-
-        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {visaCategories.map((c) => (
-            <StaggerItem key={c.title}>
-              <motion.div
-                whileHover={{ y: -4, borderColor: "hsl(43 85% 55% / 0.3)" }}
-                className="bg-card border border-border rounded-xl p-6 shadow-card h-full transition-all"
-              >
-                <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center mb-4">
-                  <c.icon size={18} className="text-accent" />
-                </div>
-                <h4 className="font-heading font-semibold text-foreground mb-2">{c.title}</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">{c.desc}</p>
-              </motion.div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-
-        <FadeIn delay={0.3}>
-          <div className="flex flex-wrap gap-3 mt-8">
-            <Link
-              to="/visa"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-accent text-accent-foreground hover:opacity-90 transition-all text-sm font-medium"
-            >
-              Explore Visa Services <ArrowRight size={14} />
-            </Link>
-            <Link
-              to="/visa"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-accent/30 text-accent hover:bg-accent/10 transition-all text-sm font-medium"
-            >
-              Free VisaScore Pro™ Check
-            </Link>
-          </div>
-        </FadeIn>
       </Section>
     </>
   );
