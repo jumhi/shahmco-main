@@ -149,7 +149,7 @@ export type TranslationKeys = {
     title1: string;
     title2: string;
     subtitle: string;
-    types: string[];
+    types: { title: string; desc?: string }[];
     note: string;
   };
   contactPage: {
