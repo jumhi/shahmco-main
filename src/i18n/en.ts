@@ -253,12 +253,15 @@ export const en: TranslationKeys = {
     subtitle:
       "We work with entrepreneurs, SMEs, and corporations seeking structured support across the GCC and international markets.",
     types: [
-      "Entrepreneurs and startup founders",
-      "SMEs entering the UAE / GCC market",
-      "Established corporations",
-      "International partners and trading houses",
-      "Cross-border operational teams",
-      "Individuals seeking visa & advisory support",
+      { title: "Entrepreneurs and startup founders" },
+      { title: "SMEs entering the UAE / GCC market" },
+      { title: "Established corporations" },
+      { title: "International partners and trading houses" },
+      { title: "Cross-border operational teams" },
+      {
+        title: "Individuals & Online Consumers",
+        desc: "Individuals purchasing digital products, visa consultation, investment migration advisory, or business guidance services directly through our online store.",
+      },
     ],
     note: "All client engagements are governed by confidentiality agreements and defined scopes of work.",
   },
