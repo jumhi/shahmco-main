@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FileText, Package, ArrowRight, CreditCard, Smartphone, Wallet, Building2, ShieldCheck } from "lucide-react";
+import { FileText, ArrowRight } from "lucide-react";
 import {
   Section,
   SectionTitle,
@@ -10,23 +10,14 @@ import {
   StaggerItem,
 } from "@/components/SectionComponents";
 import { useLanguage } from "@/i18n/LanguageContext";
+import CorporatePackages from "@/components/CorporatePackages";
+import PaymentMethodsBanner from "@/components/PaymentMethodsBanner";
 
 // Payment gateway placeholder — wire to a real provider (Stripe, Telr, Network International) later.
 const handleCheckout = (productTitle: string, price: string) => {
   const params = new URLSearchParams({ product: productTitle, price });
   window.location.href = `/contact?${params.toString()}`;
 };
-
-const PAYMENT_METHODS = [
-  { label: "Visa", icon: CreditCard },
-  { label: "Mastercard", icon: CreditCard },
-  { label: "Mada", icon: CreditCard },
-  { label: "Apple Pay", icon: Smartphone },
-  { label: "Google Pay", icon: Smartphone },
-  { label: "Samsung Pay", icon: Smartphone },
-  { label: "Installments", icon: Wallet },
-  { label: "Bank Transfer", icon: Building2 },
-];
 
 const B2C = () => {
   const { t } = useLanguage();
