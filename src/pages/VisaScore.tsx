@@ -380,18 +380,18 @@ type Destination = {
   gradient: string;
 };
 
-// Subtle flag-color gradients (low opacity so cards blend with theme)
+// Flag-color gradients — visible tint that reads on desktop and mobile
 const G = {
-  schengen: "linear-gradient(135deg, hsl(220 80% 35% / 0.22), hsl(48 95% 55% / 0.18))",
-  uk:       "linear-gradient(135deg, hsl(220 70% 30% / 0.22), hsl(0 75% 45% / 0.20), hsl(0 0% 100% / 0.10))",
-  ireland:  "linear-gradient(135deg, hsl(140 60% 35% / 0.22), hsl(0 0% 100% / 0.10), hsl(28 90% 55% / 0.20))",
-  turkey:   "linear-gradient(135deg, hsl(0 80% 40% / 0.30), hsl(0 70% 30% / 0.15))",
-  saudi:    "linear-gradient(135deg, hsl(140 70% 22% / 0.30), hsl(140 60% 30% / 0.18))",
-  uae:      "linear-gradient(135deg, hsl(140 60% 30% / 0.22), hsl(0 0% 100% / 0.10), hsl(0 70% 40% / 0.18), hsl(0 0% 0% / 0.20))",
-  canada:   "linear-gradient(135deg, hsl(0 75% 40% / 0.28), hsl(0 0% 100% / 0.10), hsl(0 75% 40% / 0.22))",
-  australia:"linear-gradient(135deg, hsl(220 70% 25% / 0.28), hsl(0 70% 40% / 0.18), hsl(0 0% 100% / 0.08))",
-  usa:      "linear-gradient(135deg, hsl(220 70% 28% / 0.25), hsl(0 0% 100% / 0.08), hsl(0 75% 40% / 0.22))",
-  china:    "linear-gradient(135deg, hsl(0 80% 38% / 0.30), hsl(48 95% 55% / 0.18))",
+  schengen: "linear-gradient(135deg, hsl(220 80% 35% / 0.55), hsl(48 95% 55% / 0.45))",
+  uk:       "linear-gradient(135deg, hsl(220 70% 30% / 0.55), hsl(0 75% 45% / 0.50), hsl(0 0% 100% / 0.25))",
+  ireland:  "linear-gradient(135deg, hsl(140 60% 35% / 0.55), hsl(0 0% 100% / 0.25), hsl(28 90% 55% / 0.50))",
+  turkey:   "linear-gradient(135deg, hsl(0 80% 40% / 0.65), hsl(0 70% 30% / 0.45))",
+  saudi:    "linear-gradient(135deg, hsl(140 70% 22% / 0.65), hsl(140 60% 30% / 0.50))",
+  uae:      "linear-gradient(135deg, hsl(140 60% 30% / 0.55), hsl(0 0% 100% / 0.25), hsl(0 70% 40% / 0.50), hsl(0 0% 0% / 0.40))",
+  canada:   "linear-gradient(135deg, hsl(0 75% 40% / 0.60), hsl(0 0% 100% / 0.25), hsl(0 75% 40% / 0.55))",
+  australia:"linear-gradient(135deg, hsl(220 70% 25% / 0.60), hsl(0 70% 40% / 0.50), hsl(0 0% 100% / 0.20))",
+  usa:      "linear-gradient(135deg, hsl(220 70% 28% / 0.60), hsl(0 0% 100% / 0.20), hsl(0 75% 40% / 0.55))",
+  china:    "linear-gradient(135deg, hsl(0 80% 38% / 0.65), hsl(48 95% 55% / 0.50))",
 };
 
 const DESTINATIONS: Destination[] = [
@@ -747,8 +747,8 @@ const VisaScore = () => {
                       selectedDestId === d.id ? "border-accent shadow-gold" : "border-border hover:border-primary/40"
                     }`}
                   >
-                    {/* Subtle dark overlay so flag gradient stays a tint, not a wash */}
-                    <span className="absolute inset-0 bg-card/55 pointer-events-none" aria-hidden />
+                    {/* Light dark overlay — keeps text readable while letting flag color show */}
+                    <span className="absolute inset-0 bg-card/20 pointer-events-none" aria-hidden />
                     <span className="relative block">
                       {d.badge && (
                         <span className={`absolute top-0 end-0 text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full border ${

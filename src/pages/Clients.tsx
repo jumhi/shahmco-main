@@ -18,15 +18,20 @@ const Clients = () => {
 
       <StaggerContainer className="grid sm:grid-cols-2 gap-6 max-w-3xl">
         {t.clientsPage.types.map((client) => (
-          <StaggerItem key={client}>
+          <StaggerItem key={client.title}>
             <motion.div
               whileHover={{ y: -4, borderColor: "hsl(43 85% 55% / 0.3)" }}
-              className="bg-card border border-border rounded-xl p-6 flex items-start gap-4 shadow-card transition-all"
+              className="bg-card border border-border rounded-xl p-6 flex items-start gap-4 shadow-card transition-all h-full"
             >
               <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
                 <Building2 size={20} className="text-accent" />
               </div>
-              <span className="text-foreground font-medium">{client}</span>
+              <div className="flex-1">
+                <h3 className="text-foreground font-medium leading-snug">{client.title}</h3>
+                {client.desc && (
+                  <p className="text-muted-foreground text-sm mt-2 leading-relaxed">{client.desc}</p>
+                )}
+              </div>
             </motion.div>
           </StaggerItem>
         ))}
