@@ -95,49 +95,17 @@ const B2C = () => {
 
       <Section>
         <FadeIn>
-          <p className="text-accent font-heading text-sm tracking-widest mb-4">PACKAGED SERVICES</p>
+          <p className="text-accent font-heading text-sm tracking-widest mb-4">CORPORATE SOLUTIONS</p>
         </FadeIn>
         <SectionTitle>
-          {d.bundlesTitle1} <span className="text-gradient-gold">{d.bundlesTitle2}</span>
+          Premium Service <span className="text-gradient-gold">Packages</span>
         </SectionTitle>
-        <SectionSubtitle>{d.bundlesSubtitle}</SectionSubtitle>
+        <SectionSubtitle>
+          Select your market. Purchase directly or enquire for a tailored assessment.
+          Bilingual · GCC-compliant · Delivered to standard.
+        </SectionSubtitle>
 
-        <StaggerContainer className="grid md:grid-cols-3 gap-6">
-          {d.bundles.map((b) => (
-            <StaggerItem key={b.title}>
-              <motion.div
-                whileHover={{ y: -4, borderColor: "hsl(43 85% 55% / 0.3)" }}
-                className="bg-card border border-border rounded-2xl p-8 shadow-card h-full flex flex-col transition-all"
-              >
-                <div className="inline-flex self-start items-center gap-1.5 text-xs px-3 py-1 rounded-full bg-accent/10 text-accent mb-4">
-                  <Package size={12} /> {b.label}
-                </div>
-                <h3 className="font-heading text-xl font-bold text-foreground mb-3">{b.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-5">{b.desc}</p>
-                <ul className="space-y-2 mb-6 flex-1">
-                  {b.includes.map((it) => (
-                    <li key={it} className="flex items-start gap-3 text-sm text-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
-                      <span>{it}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="border-t border-border pt-5 flex items-end justify-between gap-3">
-                  <div>
-                    <div className="text-gradient-gold font-heading text-2xl font-bold">{b.price}</div>
-                    <div className="text-xs text-muted-foreground">{b.sub}</div>
-                  </div>
-                  <Link
-                    to="/contact"
-                    className="text-sm px-4 py-2 rounded-lg border border-accent/30 text-accent hover:bg-accent/10 transition-all whitespace-nowrap"
-                  >
-                    {d.enquire}
-                  </Link>
-                </div>
-              </motion.div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+        <CorporatePackages />
       </Section>
 
       <Section>
@@ -186,32 +154,7 @@ const B2C = () => {
       {/* Payment Methods Banner */}
       <Section className="pt-0">
         <FadeIn>
-          <div className="bg-card border border-border rounded-2xl p-8 shadow-card">
-            <div className="flex items-center gap-2 mb-5">
-              <ShieldCheck size={18} className="text-accent" />
-              <span className="text-accent font-heading text-xs tracking-widest">SECURE PAYMENT METHODS</span>
-            </div>
-            <h3 className="font-heading text-xl font-bold text-foreground mb-2">
-              We accept all major payment methods
-            </h3>
-            <p className="text-muted-foreground text-sm mb-6">
-              All transactions are SSL-encrypted and processed via PCI-DSS compliant gateways.
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
-              {PAYMENT_METHODS.map((m) => {
-                const Icon = m.icon;
-                return (
-                  <div
-                    key={m.label}
-                    className="flex flex-col items-center gap-2 p-3 rounded-lg bg-secondary/50 border border-border hover:border-accent/30 transition-all"
-                  >
-                    <Icon size={20} className="text-accent" />
-                    <span className="text-[11px] text-foreground font-medium text-center">{m.label}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          <PaymentMethodsBanner />
         </FadeIn>
       </Section>
     </>
