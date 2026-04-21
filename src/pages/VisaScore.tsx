@@ -743,12 +743,17 @@ const VisaScore = () => {
                     whileHover={{ y: -2 }}
                     onClick={() => setSelectedDestId(d.id)}
                     style={{ backgroundImage: d.gradient }}
-                    className={`relative text-start bg-card border rounded-xl p-4 transition-all overflow-hidden ${
+                    className={`group relative text-start bg-card border rounded-xl p-4 transition-all overflow-hidden ${
                       selectedDestId === d.id ? "border-accent shadow-gold" : "border-border hover:border-primary/40"
                     }`}
                   >
-                    {/* Light dark overlay — keeps text readable while letting flag color show */}
-                    <span className="absolute inset-0 bg-card/20 pointer-events-none" aria-hidden />
+                    {/* Dark overlay — fades out on hover/selection so flag gradient pops */}
+                    <span
+                      className={`absolute inset-0 pointer-events-none transition-opacity duration-300 bg-card/20 group-hover:opacity-0 ${
+                        selectedDestId === d.id ? "opacity-0" : "opacity-100"
+                      }`}
+                      aria-hidden
+                    />
                     <span className="relative block">
                       {d.badge && (
                         <span className={`absolute top-0 end-0 text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full border ${
