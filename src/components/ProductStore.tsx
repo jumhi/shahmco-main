@@ -234,7 +234,8 @@ const SORTED: Country[] = (() => {
 /* ═══════════════════════════════════════════
    PHONE INPUT
 ═══════════════════════════════════════════ */
-function PhoneInput({ onChange, ui }: { onChange: (v: string) => void; ui: typeof UI.en }) {
+type UIStrings = (typeof UI)[Lang];
+function PhoneInput({ onChange, ui }: { onChange: (v: string) => void; ui: UIStrings }) {
   const [dial, setDial] = useState("971");
   const [iso, setIso] = useState("AE");
   const [num, setNum] = useState("");
@@ -411,7 +412,7 @@ const CLIENT_TYPES = [
 /* ═══════════════════════════════════════════
    FORM FIELDS
 ═══════════════════════════════════════════ */
-function Fields({ fd, setFd, showMsg, ui, lang }: { fd: FormData; setFd: React.Dispatch<React.SetStateAction<FormData>>; showMsg: boolean; ui: typeof UI.en; lang: Lang }) {
+function Fields({ fd, setFd, showMsg, ui, lang }: { fd: FormData; setFd: React.Dispatch<React.SetStateAction<FormData>>; showMsg: boolean; ui: UIStrings; lang: Lang }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
       <div>
