@@ -11,8 +11,8 @@ export const zh: TranslationKeys = {
     clients: "客户",
     contact: "联系我们",
     privacy: "隐私",
-    pricing: "产品",
-    downloads: "B2C",
+    pricing: "价格",
+    downloads: "产品",
     visa: "签证服务",
   },
   hero: {

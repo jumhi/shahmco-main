@@ -15,7 +15,7 @@ const Navbar = () => {
     { label: t.nav.home, path: "/" },
     { label: t.nav.about, path: "/about" },
     { label: t.nav.services, path: "/services" },
-    { label: t.nav.downloads, path: "/b2c" },
+    { label: t.nav.downloads, path: "/products" },
     { label: t.nav.visa, path: "/visa" },
     { label: t.nav.howWeWork, path: "/how-we-work" },
     { label: t.nav.compliance, path: "/compliance" },
