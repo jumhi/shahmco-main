@@ -11,8 +11,8 @@ export const ar: TranslationKeys = {
     clients: "العملاء",
     contact: "اتصل بنا",
     privacy: "الخصوصية",
-    pricing: "المنتجات",
-    downloads: "B2C",
+    pricing: "الأسعار",
+    downloads: "المنتجات",
     visa: "خدمات التأشيرات",
   },
   hero: {
