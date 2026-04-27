@@ -1,18 +1,27 @@
+DirectoryIndex index.html
+Options -MultiViews
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
   # Force HTTPS
-  RewriteCond %{HTTPS} off
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # If the requested resource exists as a file or directory, serve it
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
+  # Don't rewrite the root document itself
+  RewriteRule ^index\.html$ - [L]
 
-  # Otherwise, serve index.html (SPA routing)
-  RewriteRule ^ index.html [QSA,L]
+  # Serve existing files and directories normally
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # SPA fallback for client-side routes like /visa or /products
+  RewriteRule . /index.html [L]
 </IfModule>
+
+ErrorDocument 404 /index.html
 
 # Cache static assets
 <IfModule mod_expires.c>
